@@ -45,24 +45,38 @@ addEventListener("keydown", (e) => {
 addEventListener("keyup", (e) => {
   if (e.key === "w") {
     playerInput.y = 0;
-    playerInput.x = 0;
+
     return;
   }
 
   if (e.key === "s") {
     playerInput.y = 0;
-    playerInput.x = 0;
+
     return;
   }
 
   if (e.key === "d") {
     playerInput.x = 0;
-    playerInput.y = 0;
+
     return;
   }
   if (e.key === "a") {
     playerInput.x = 0;
-    playerInput.y = 0;
+
     return;
   }
 });
+
+export const getPlayerPosition = () => {
+  return {
+    x: canvas.width / 2 - playerImage.width / 4 / 2,
+    y: canvas.height / 2 - playerImage.height / 2,
+  };
+};
+
+export const getPlayerSize = () => {
+  return {
+    w: playerImage.width / 4,
+    h: playerImage.height,
+  };
+};
