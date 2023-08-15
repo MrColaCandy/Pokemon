@@ -4,7 +4,12 @@ export class Collider {
     this.position = position;
   }
   draw(context) {
-    context.fillStyle = "red";
-    context.fillRect(this.position.x, this.position.y, 48, 48);
+    context.fillStyle = "rgba(0,0,0,0)";
+    context.fillRect(
+      this.position.x,
+      this.position.y,
+      Collider.size,
+      Collider.size
+    );
   }
 }

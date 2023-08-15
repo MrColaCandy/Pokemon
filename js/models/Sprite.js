@@ -4,7 +4,17 @@ export class Sprite {
     this.image = image;
   }
 
-  draw(context) {
-    context.drawImage(this.image, this.position.x, this.position.y);
+  draw(context, currentFrame = 0, frames = 1) {
+    context.drawImage(
+      this.image,
+      currentFrame,
+      0,
+      this.image.width / frames,
+      this.image.height,
+      this.position.x,
+      this.position.y,
+      this.image.width / frames,
+      this.image.height
+    );
   }
 }
