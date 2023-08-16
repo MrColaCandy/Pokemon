@@ -1,5 +1,5 @@
-import { canvas, context } from "./canvas.js";
-import { Sprite } from "./models/Sprite.js";
+import { canvas, context } from "../canvas.js";
+import { Sprite } from "../models/Sprite.js";
 import { playerInput } from "./playerInput.js";
 
 export const playerImageDown = new Image();

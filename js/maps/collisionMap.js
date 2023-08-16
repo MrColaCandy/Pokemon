@@ -1,6 +1,6 @@
-import { context } from "./canvas.js";
-import { collisions } from "./data/collisions.js";
-import { Collider } from "./models/Collider.js";
+import { context } from "../canvas.js";
+import { collisions } from "../data/collisions.js";
+import { Collider } from "../models/Collider.js";
 import { offset } from "./map.js";
 const collisionMap = [];
 export const colliders = [];

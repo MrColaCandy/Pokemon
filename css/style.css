@@ -6,9 +6,39 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-canvas {
+#base {
+  position: relative;
   margin-top: 50px;
+}
+canvas {
   width: 1250px;
   height: 600px;
+}
+
+.notification {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+.inventory-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10%;
+}
+.pokemon-ball-btn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 7%;
 }

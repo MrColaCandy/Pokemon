@@ -1,5 +1,5 @@
-import { Sprite } from "./models/Sprite.js";
-import { context } from "./canvas.js";
+import { Sprite } from "../models/Sprite.js";
+import { context } from "../canvas.js";
 export const foreground = new Image();
 foreground.src = "../assets/images/foreground.png";
 export const offset = { x: -233, y: -250 };

@@ -1,4 +1,4 @@
-import { Collider } from "./models/Collider.js";
+import { Collider } from "../models/Collider.js";
 
 const playerSize = { width: 25, height: 36 };
 export function isCollide(player, collider) {
