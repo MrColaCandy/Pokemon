@@ -1,0 +1,36 @@
+.btn {
+  padding: 10px 15px;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 16px;
+  transition: transform 200ms;
+}
+.btn.heal {
+  background-color: seagreen;
+}
+.btn.charge {
+  background-color: skyblue;
+}
+
+.close-btn {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: small;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}

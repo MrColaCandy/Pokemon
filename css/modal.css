@@ -1,0 +1,77 @@
+.modal {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  left: calc(50% - 420px / 2);
+  top: calc(50% - 420px / 2);
+  background-color: var(--back-ground-color);
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+}
+.modal .stats {
+  position: absolute;
+  top: 20px;
+}
+
+.modal .modal-body .avatar img {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: -70px;
+  top: -100px;
+}
+.modal .modal-body {
+  width: 75%;
+}
+
+.modal .modal-body .powers,
+.modal .modal-body .current {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: small;
+}
+.modal .modal-body .current {
+  width: 350px;
+}
+.modal .modal-header {
+  text-align: center;
+  width: 100%;
+
+  font-size: 2.5rem;
+
+  color: black;
+  font-weight: bolder;
+}
+.modal .modal-footer {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal .resources {
+  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.hp img,
+.mona img {
+  width: 25px;
+  height: 25px;
+}
+
+.xp,
+.hp,
+.mona {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

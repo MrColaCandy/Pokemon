@@ -6,6 +6,7 @@ import { speed } from "./animation.js";
 import { battleColliders } from "./maps/battleZonesMap.js";
 import { healths } from "./maps/healthMap.js";
 import { activateNotification } from "./notifications.js";
+
 export const physics = () => {
   requestAnimationFrame(physics);
   // detecting battle zones
@@ -27,6 +28,7 @@ export const physics = () => {
       if (health.size === 0) return;
       health.size = 0;
       activateNotification("Health Added!");
+
       break;
     }
   }

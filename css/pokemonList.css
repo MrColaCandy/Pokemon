@@ -1,0 +1,41 @@
+.pokemon-btn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 7%;
+}
+
+.pokemons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 25%;
+  height: 200px;
+  background-color: var(--back-ground-color);
+  display: none;
+  overflow-x: scroll;
+  padding: 0px 16px;
+}
+
+.pokemons .items {
+  background-color: var(--primary-color);
+  padding: 6px 12px;
+  margin: 5px 5px;
+  border-radius: 16px;
+  border: var(--primary-color) dashed 1px;
+}
+.pokemons .items img {
+  min-width: 96px;
+  min-height: 96px;
+}
+.pokemons .items .stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pokemons .items .stats div {
+  margin: 1px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: xx-small;
+}

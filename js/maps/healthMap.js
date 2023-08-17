@@ -9,7 +9,7 @@ for (let i = 0; i < healthAreas.length; i += 70) {
   healthMap.push(healthAreas.slice(i, i + 70));
 }
 const image = new Image();
-image.src = "../../assets/images/rp.png";
+image.src = "../../assets/images/health.png";
 healthMap.forEach((row, i) => {
   row.forEach((col, j) => {
     if (col != 1025) return;

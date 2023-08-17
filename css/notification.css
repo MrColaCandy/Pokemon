@@ -1,0 +1,15 @@
+.notification {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 80px;
+  background-color: var(--back-ground-color);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
