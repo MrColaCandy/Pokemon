@@ -1,5 +1,5 @@
-import { activateNotification } from "../notifications.js";
-import { showAnimation } from "../lottieAnimations.js";
+import { activateNotification } from "../UI/notifications.js";
+import { showAnimation } from "../UI/lottieAnimations.js";
 export const levelUp = (pokemonData) => {
   if (pokemonData.xp >= 100 * pokemonData.level) {
     if (pokemonData.stats.hp === 255) {

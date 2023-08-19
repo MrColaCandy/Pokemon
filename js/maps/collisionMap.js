@@ -1,5 +1,5 @@
-import { context } from "../canvas.js";
-import { collisions } from "../data/collisions.js";
+import { context } from "../UI/canvas.js";
+import { collisions } from "../data/collisionsData.js";
 import { Collider } from "../models/Collider.js";
 import { offset } from "./map.js";
 const collisionMap = [];

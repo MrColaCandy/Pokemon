@@ -6,7 +6,7 @@ export const activateNotification = (message) => {
     duration: 0.5,
     onComplete: () => {
       gsap.to(notification, {
-        delay: 1.5,
+        delay: 0.5,
         opacity: 0,
         duration: 1,
       });

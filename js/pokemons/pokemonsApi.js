@@ -14,8 +14,8 @@ export const getPokemon = async (pokemonName) => {
   const pokemonUrl = data.results.find((p) => p.name === pokemonName).url;
   const pokemon = await get(pokemonUrl);
 
-  const frontSpritUrl = pokemon.data.sprites.front_default;
-  const backSpritUrl = pokemon.data.sprites.back_default;
+  const front = pokemon.data.sprites.front_default;
+  const back = pokemon.data.sprites.back_default;
   const stats = {
     hp: pokemon.data.stats[0].base_stat,
     attack: pokemon.data.stats[1].base_stat,
@@ -30,8 +30,8 @@ export const getPokemon = async (pokemonName) => {
   _pokemon = {
     id,
     name,
-    frontSpritUrl,
-    backSpritUrl,
+    front,
+    back,
     stats,
     type,
   };

@@ -1,4 +1,4 @@
-import { gameState } from "./gameState.js";
+import { gameState } from "../gameState.js";
 
 export const openCatchScene = (pokemonData) => {
   const catchScene = document.createElement("div");
@@ -13,7 +13,7 @@ export const openCatchScene = (pokemonData) => {
   leaveBtn.innerText = "LEAVE!";
   leaveBtn.setAttribute("data-catchScene", "leave-btn");
 
-  catchBtn.innerText = "CATCH!";
+  catchBtn.innerText = "CATCH! 10";
   catchBtn.className = "btn catch-btn";
   catchBtn.setAttribute("data-catchScene", "catch-btn");
   character.className = "throw-ball";
@@ -22,7 +22,7 @@ export const openCatchScene = (pokemonData) => {
   pokemonName.style.color = "white";
   pokemonName.style.fontWeight = "bold";
   pokemonName.innerHTML = `You found <span class="lead">${pokemonData.name}</span> try to catch it!`;
-  pokemonImage.src = pokemonData.frontSpritUrl;
+  pokemonImage.src = pokemonData.front;
   pokemon.style.position = "absolute";
   pokemon.style.right = "100px";
   pokemon.style.bottom = "100px";

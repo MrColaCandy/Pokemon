@@ -1,6 +1,6 @@
 import { createBar } from "./bar.js";
-import { playerData } from "./player/playerData.js";
-import { pokemonBtn, pokemonsDiv } from "./pokemons.js";
+import { playerData } from "../player/playerData.js";
+import { pokemonBtn, pokemonsDiv } from "../pokemons/pokemonsList.js";
 
 export const modal = document.getElementById("modal");
 const modalBody = modal.querySelector(".modal-body");
@@ -12,8 +12,8 @@ export const openModal = (pokemon) => {
   modal.style.display = "flex";
   modalHeader.innerHTML = pokemon.name;
   const image = document.createElement("img");
-  image.src = pokemon.frontSpritUrl;
-  console.log(pokemon.frontSpritUrl);
+  image.src = pokemon.front;
+
   const pokemonData = playerData.playerPokemons.find(
     (p) => p.id === pokemon.id
   );

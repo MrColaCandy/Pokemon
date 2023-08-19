@@ -1,11 +1,11 @@
-import { colliders } from "./maps/collisionMap.js";
-import { playerSprit } from "./player/player.js";
-import { isCollide } from "./player/playerCollider.js";
-import { playerInput } from "./player/playerInput.js";
+import { colliders } from "../maps/collisionMap.js";
+import { playerSprit } from "../player/player.js";
+import { isCollide } from "../player/playerCollider.js";
+import { playerInput } from "../player/playerInput.js";
 import { speed } from "./animation.js";
-import { battleColliders } from "./maps/battleZonesMap.js";
-import { findPokemon } from "./pokemonsCatch.js";
-import { gameState } from "./gameState.js";
+import { battleColliders } from "../maps/battleZonesMap.js";
+import { findPokemon } from "../pokemons/pokemonsCatch.js";
+import { gameState } from "../gameState.js";
 
 export const physics = () => {
   requestAnimationFrame(physics);

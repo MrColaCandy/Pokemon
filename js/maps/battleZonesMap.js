@@ -1,5 +1,5 @@
-import { context } from "../canvas.js";
-import { battleZones } from "../data/battleZones.js";
+import { context } from "../UI/canvas.js";
+import { battleZones } from "../data/battleZonesData.js";
 import { Collider } from "../models/Collider.js";
 import { offset } from "./map.js";
 const battleZoneMap = [];

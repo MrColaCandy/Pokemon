@@ -1,20 +1,24 @@
-import { animate } from "./animation.js";
-import { physics } from "./physics.js";
-import { pokemonBtn, renderPokemons, closePokemonList } from "./pokemons.js";
+import { animate } from "./game-loops/animation.js";
+import { physics } from "./game-loops/physics.js";
+import {
+  pokemonBtn,
+  renderPokemons,
+  closePokemonList,
+} from "./pokemons/pokemonsList.js";
 import {
   getCatchingPokemon,
   getCurrentPokemon,
   setCurrentPokemon,
-} from "./currentPokemon.js";
-import { getPokemon } from "./pokemonsApi.js";
-import { closeModal, openModal } from "./modal.js";
+} from "./pokemons/currentPokemon.js";
+import { getPokemon } from "./pokemons/pokemonsApi.js";
+import { closeModal, openModal } from "./UI/modal.js";
 import { levelUp } from "./player/playerProgress.js";
 import { playerData } from "./player/playerData.js";
-import { heal } from "./healing.js";
-import { charge } from "./charging.js";
+import { heal } from "./pokemons/pokemonHealing.js";
+import { charge } from "./pokemons/pokemonCharging.js";
 import { gameState } from "./gameState.js";
-import { catchPokemon } from "./pokemonsCatch.js";
-import { closeCatchScene } from "./catchScene.js";
+import { catchPokemon } from "./pokemons/pokemonsCatch.js";
+import { closeCatchScene } from "./scenes/catchScene.js";
 
 // physics loop
 physics();
@@ -63,6 +67,8 @@ addEventListener("click", (e) => {
     closeCatchScene();
   }
   if (e.target.dataset.catchscene === "catch-btn") {
-    catchPokemon(getCatchingPokemon());
+    if (gameState.catch) {
+      catchPokemon(getCatchingPokemon());
+    }
   }
 });

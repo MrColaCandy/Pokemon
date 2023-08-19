@@ -1,5 +1,5 @@
 import { Sprite } from "../models/Sprite.js";
-import { context } from "../canvas.js";
+import { context } from "../UI/canvas.js";
 export const mapImage = new Image();
 mapImage.src = "../assets/images/map.png";
 export const offset = { x: -233, y: -250 };

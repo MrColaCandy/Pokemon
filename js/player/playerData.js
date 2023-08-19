@@ -3,6 +3,9 @@ export const playerData = {
     {
       id: 25,
       name: "pikachu",
+      back: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png",
+      front:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
       level: 1,
       health: 53,
       mona: 100,

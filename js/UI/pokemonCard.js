@@ -1,8 +1,9 @@
 import { createBar } from "./bar.js";
 
 export const createPokemonCard = (pokemon) => {
+  console.log(pokemon.front);
   const image = document.createElement("img");
-  image.src = pokemon.frontSpritUrl;
+  image.src = pokemon.front;
   image.id = pokemon.id;
   image.alt = pokemon.name;
   image.setAttribute("data-pokemon", pokemon.name);

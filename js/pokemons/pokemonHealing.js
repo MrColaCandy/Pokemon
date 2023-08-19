@@ -1,5 +1,5 @@
-import { activateNotification } from "./notifications.js";
-import { playerData } from "./player/playerData.js";
+import { activateNotification } from "../UI/notifications.js";
+import { playerData } from "../player/playerData.js";
 
 export const heal = (pokemonData) => {
   if (playerData.items.health > 0) {
