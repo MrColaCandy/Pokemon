@@ -4,11 +4,13 @@ import { isCollide } from "./player/playerCollider.js";
 import { playerInput } from "./player/playerInput.js";
 import { speed } from "./animation.js";
 import { battleColliders } from "./maps/battleZonesMap.js";
-import { healths } from "./maps/healthMap.js";
-import { activateNotification } from "./notifications.js";
+import { findPokemon } from "./pokemonsCatch.js";
+import { gameState } from "./gameState.js";
 
 export const physics = () => {
   requestAnimationFrame(physics);
+  if (gameState.battle || gameState.catch) return;
+  findPokemon();
   // detecting battle zones
   if (playerInput.x !== 0 || playerInput.y !== 0) {
     for (let i = 0; i < battleColliders.length; i++) {
@@ -19,17 +21,6 @@ export const physics = () => {
         }
         break;
       }
-    }
-  }
-  //detecting healths
-  for (let i = 0; i < healths.length; i++) {
-    const health = healths[i];
-    if (isCollide(playerSprit, health)) {
-      if (health.size === 0) return;
-      health.size = 0;
-      activateNotification("Health Added!");
-
-      break;
     }
   }
 

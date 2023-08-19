@@ -6,7 +6,7 @@ export const createPokemonCard = (pokemon) => {
   image.id = pokemon.id;
   image.alt = pokemon.name;
   image.setAttribute("data-pokemon", pokemon.name);
-  const cardImage = image.outerHTML;
+
   const cardTitle = `<h6>${pokemon.name}</h6>`;
 
   function cardStat(name) {
@@ -21,8 +21,10 @@ export const createPokemonCard = (pokemon) => {
     return stat;
   }
   const card = `
-    <div class="items">
-    ${cardImage}
+    <div class="card">
+    <div class="card-image">
+    ${image.outerHTML}
+    </div>
     ${cardTitle}
         <div class="stats" >
         ${cardStat("hp")}

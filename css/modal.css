@@ -25,6 +25,12 @@
   left: -70px;
   top: -100px;
 }
+.modal .modal-body .avatar .level {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  font-weight: bolder;
+}
 .modal .modal-body {
   width: 75%;
 }

@@ -1,0 +1,22 @@
+.throw-ball {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  background-image: url("../assets//images/ThrowSpriteSheet.png");
+}
+.throw-ball-active {
+  animation: throw 0.8s steps(5) infinite;
+}
+@keyframes throw {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1024px 0;
+  }
+  0% {
+    background-position: 0 0;
+  }
+}

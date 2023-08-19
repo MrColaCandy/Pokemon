@@ -20,8 +20,8 @@
 
   border-radius: 100%;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 10px;
   border: 1px solid white;
   display: flex;
   justify-content: center;
@@ -32,5 +32,16 @@
 }
 
 .btn:active {
-  transform: scale(0.99);
+  transform: scale(0.95);
+}
+
+.catch-btn,
+.leave-btn {
+  border-radius: 0;
+  padding: 20px 45px;
+  margin: 10px;
+}
+
+.catch-btn {
+  background-color: rgba(255, 68, 0, 0.577);
 }

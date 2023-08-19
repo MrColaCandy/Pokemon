@@ -1,8 +1,7 @@
-import { canvas } from "./canvas.js";
+import { playerData } from "./player/playerData.js";
 import { createPokemonCard } from "./pokemonCard.js";
 import { getPokemon } from "./pokemonsApi.js";
 
-export const pokemons = ["pikachu"];
 export const pokemonsDiv = document.getElementById("pokemons");
 export const pokemonBtn = document.getElementById("pokemon-btn");
 
@@ -11,9 +10,13 @@ export const renderPokemons = () => {
   pokemonBtn.style.display = "none";
   pokemonsDiv.style.display = "flex";
 
-  pokemons.forEach(async (p) => {
-    const pokemon = await getPokemon(p);
+  playerData.playerPokemons.forEach(async (p) => {
+    const pokemon = await getPokemon(p.name);
     const card = createPokemonCard(pokemon);
     pokemonsDiv.innerHTML += card;
   });
 };
+export function closePokemonList() {
+  pokemonBtn.style.display = "block";
+  pokemonsDiv.style.display = "none";
+}
