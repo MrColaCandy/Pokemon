@@ -1,7 +1,7 @@
 let currentPokemon = null;
 let battlePokemon = null;
 let catchingPokemon = null;
-export const currentStats = { hp: 0, mona: 0 };
+
 export const setCurrentPokemon = (pokemon) => {
   currentPokemon = pokemon;
 };

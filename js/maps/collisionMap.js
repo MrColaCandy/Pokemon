@@ -1,7 +1,7 @@
 import { context } from "../UI/canvas.js";
 import { collisions } from "../data/collisionsData.js";
 import { Collider } from "../models/Collider.js";
-import { offset } from "./map.js";
+import { offset } from "./mainMap.js";
 const collisionMap = [];
 export const colliders = [];
 for (let i = 0; i < collisions.length; i += 70) {

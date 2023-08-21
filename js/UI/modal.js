@@ -1,71 +1,55 @@
 import { createBar } from "./bar.js";
 import { playerData } from "../player/playerData.js";
-import { pokemonBtn, pokemonsDiv } from "../pokemons/pokemonsList.js";
+import { pokemonBtn, pokemonsDiv } from "../UI/pokemonsList.js";
+import { levelUp } from "../pokemons/pokemonLevelUp.js";
+import { heal } from "../pokemons/pokemonHealing.js";
+import { charge } from "../pokemons/pokemonCharging.js";
+import { catchPokemon } from "../pokemons/pokemonsCatch.js";
+import { closeCatchScene } from "../scenes/catchScene.js";
+import {
+  getCurrentPokemon,
+  setCurrentPokemon,
+} from "../pokemons/currentPokemon.js";
 
 export const modal = document.getElementById("modal");
 const modalBody = modal.querySelector(".modal-body");
 const modalHeader = modal.querySelector(".modal-header");
 const modalFooter = modal.querySelector(".modal-footer");
-export const openModal = (pokemon) => {
+export const openModal = () => {
+  const pokemon = getCurrentPokemon();
   pokemonBtn.style.display = "block";
   pokemonsDiv.style.display = "none";
   modal.style.display = "flex";
   modalHeader.innerHTML = pokemon.name;
-  const image = document.createElement("img");
-  image.src = pokemon.front;
+  const image = pokemon.frontImage;
 
-  const pokemonData = playerData.playerPokemons.find(
-    (p) => p.id === pokemon.id
-  );
   const itemsData = playerData.items;
-  const hp = createBar(
-    (pokemonData.stats.hp / 255) * 150,
-    "10px",
-    "orangered",
-    150
-  );
-  const attack = createBar(
-    (pokemonData.stats.attack / 255) * 150,
-    "10px",
-    "orangered",
-    150
-  );
-  const defense = createBar(
-    (pokemonData.stats.defense / 255) * 150,
-    "10px",
-    "orangered",
-    150
-  );
+  const hp = createBar((pokemon.hp / 255) * 120, "10px", 120);
+  const attack = createBar((pokemon.attack / 255) * 120, "10px", 120);
+  const defense = createBar((pokemon.defense / 255) * 120, "10px", 120);
   const special_attack = createBar(
-    (pokemonData.stats.specialAttack / 255) * 150,
+    (pokemon.specialAttack / 255) * 120,
     "10px",
-    "orangered",
-    150
+    120
   );
   const special_defense = createBar(
-    (pokemonData.stats.specialDefense / 255) * 150,
+    (pokemon.specialDefense / 255) * 120,
     "10px",
-    "orangered",
-    150
+    120
   );
-  const speed = createBar(
-    (pokemonData.stats.speed / 255) * 150,
-    "10px",
-    "orangered",
-    150
-  );
+  const speed = createBar((pokemon.speed / 255) * 120, "10px", 120);
 
   const health = createBar(
-    (pokemonData.health / pokemonData.maxHealth) * 300,
+    (pokemon.currentHealth / pokemon.maxHealth) * 200,
     "10px",
-    "seagreen",
-    300
+    200,
+    "salmon"
   );
   const mona = createBar(
-    (pokemonData.mona / pokemonData.maxMona) * 300,
+    (pokemon.currentMona / pokemon.maxMona) * 200,
     "10px",
-    "blue",
-    300
+    200,
+    "skyblue"
   );
 
   const levelUpBtn = document.createElement("button");
@@ -88,34 +72,39 @@ export const openModal = (pokemon) => {
 
   modalBody.innerHTML = `
   
-  <div class="stats">
+  <div class="current-stats">
     <div class="current">${health.outerHTML}</div>
     <div class="current">${mona.outerHTML}</div>
   </div>
   <div class="avatar">
     ${image.outerHTML}
-    <div class="level" >level: ${pokemonData.level}</div>
+    <div class="level" >LEVEL: ${pokemon.level}</div>
+    <div class="level" >XP: ${pokemon.xp}</div>
   </div>
-  <div class="powers">${hp.outerHTML} hp: ${pokemonData.stats.hp}</div>
-  <div class="powers">${attack.outerHTML} attack: ${pokemonData.stats.attack}</div>
-  <div class="powers">${defense.outerHTML} defense: ${pokemonData.stats.defense}</div>
-  <div class="powers">${special_attack.outerHTML} special attack: ${pokemonData.stats.specialAttack}</div>
-  <div class="powers">${special_defense.outerHTML} special defense : ${pokemonData.stats.specialDefense}</div>
-  <div class="powers">${speed.outerHTML} speed: ${pokemonData.stats.speed}</div>
+  <div class="stats">
+   <div class="powers">${hp.outerHTML} hp: ${pokemon.hp}</div>
+   <div class="powers">${attack.outerHTML} attack: ${pokemon.attack}</div>
+   <div class="powers">${defense.outerHTML} defense: ${pokemon.defense}</div>
+   <div class="powers">${special_attack.outerHTML} special attack: ${pokemon.specialAttack}</div>
+   <div class="powers">${special_defense.outerHTML} special defense : ${pokemon.specialDefense}</div>
+   <div class="powers">${speed.outerHTML} speed: ${pokemon.speed}</div>
+  </div>
   <div class="resources">
-   <div class="xp" id="xp">
-    <div>Xp: </div>
-    <div>${pokemonData.xp} </div>
-   </div>
+   <h3>Inventory</h3>
    <div class="hp" id="hp" >
-    ${hpImg.outerHTML}
-    <div>hp x${itemsData.health}</div>
+     ${hpImg.outerHTML}
+     <div>hp x${itemsData.health}</div>
    </div>
    <div class="mona" id="mona">
-   ${monaImg.outerHTML}
-    <div>mona x${itemsData.mona}</div>
+     ${monaImg.outerHTML}
+     <div>mona x${itemsData.mona}</div>
    </div>
-   </div> 
+  </div>
+  <div class="modal-description">
+    <h3>Description</h3>
+    <p>${pokemon.description[0]}</p>
+ 
+  </div> 
    <div data-modal="close" class="close-btn" >X<div>    
   `;
 
@@ -128,3 +117,24 @@ export const openModal = (pokemon) => {
 export function closeModal() {
   modal.style.display = "none";
 }
+export const handleModalEvents = () => {
+  addEventListener("click", async (e) => {
+    if (e.target.dataset.modal === "close") {
+      closeModal();
+    }
+
+    if (e.target.dataset.modal === "levelUp") {
+      levelUp();
+      openModal();
+    }
+
+    if (e.target.dataset.modal === "heal") {
+      heal();
+      openModal();
+    }
+    if (e.target.dataset.modal === "charge") {
+      charge();
+      openModal();
+    }
+  });
+};

@@ -12,7 +12,7 @@ export const playerImageRight = new Image();
 playerImageRight.src = "../assets/images/playerRight.png";
 
 let frame = 0;
-let maxFrames = 3;
+let maxFrames = 1;
 let timer = 0;
 export const playerSprit = new Sprite(
   {
@@ -40,5 +40,5 @@ export const drawPlayer = () => {
   } else if (playerInput.x < 0) {
     playerSprit.image = playerImageLeft;
   }
-  playerSprit.draw(context, frame * (playerImageDown.width / 4), 4);
+  playerSprit.draw(context, frame * (playerImageDown.width / 2), 2);
 };

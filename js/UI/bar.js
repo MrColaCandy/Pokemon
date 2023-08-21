@@ -1,4 +1,4 @@
-export const createBar = (width, height, color, backWidth) => {
+export const createBar = (width, height, backWidth, color = "seagreen") => {
   const container = document.createElement("div");
   const bar = document.createElement("div");
   const back = document.createElement("div");

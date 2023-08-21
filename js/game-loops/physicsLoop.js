@@ -2,13 +2,15 @@ import { colliders } from "../maps/collisionMap.js";
 import { playerSprit } from "../player/player.js";
 import { isCollide } from "../player/playerCollider.js";
 import { playerInput } from "../player/playerInput.js";
-import { speed } from "./animation.js";
+import { speed } from "./animationLoop.js";
 import { battleColliders } from "../maps/battleZonesMap.js";
 import { findPokemon } from "../pokemons/pokemonsCatch.js";
-import { gameState } from "../gameState.js";
+import { gameState } from "../game-state/gameState.js";
+import { isOnline } from "../game-state/connection.js";
 
 export const physics = () => {
   requestAnimationFrame(physics);
+  if (!isOnline) return;
   if (gameState.battle || gameState.catch) return;
   findPokemon();
   // detecting battle zones

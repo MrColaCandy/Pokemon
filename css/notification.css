@@ -1,11 +1,11 @@
 .notification {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 4px;
+  right: 1px;
   width: 200px;
-  height: 80px;
-  background-color: var(--back-ground-color);
-  color: white;
+  height: 50px;
+  background-color: burlywood;
+  color: rgb(117, 71, 33);
   text-align: center;
   opacity: 0;
   display: flex;
@@ -13,6 +13,7 @@
   align-items: center;
   pointer-events: none;
   padding: 10px 20px;
-  border-radius: 16px;
+  border-radius: 50px;
+  border-bottom-right-radius: 0;
   z-index: 300;
 }

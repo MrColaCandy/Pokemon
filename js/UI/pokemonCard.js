@@ -1,25 +1,20 @@
 import { createBar } from "./bar.js";
 
 export const createPokemonCard = (pokemon) => {
-  console.log(pokemon.front);
-  const image = document.createElement("img");
-  image.src = pokemon.front;
+  const image = pokemon.frontImage;
   image.id = pokemon.id;
   image.alt = pokemon.name;
-  image.setAttribute("data-pokemon", pokemon.name);
+  image.setAttribute("data-card", pokemon.id);
 
   const cardTitle = `<h6>${pokemon.name}</h6>`;
 
-  function cardStat(name) {
-    const stat = `
-    <div>${
-      createBar((pokemon.stats[name] / 255) * 60, "10px", "orangered", 60)
-        .outerHTML
-    }
+  function cartBar(name) {
+    const bar = `
+    <div>${createBar((pokemon[name] / 255) * 60, "10px", 60).outerHTML}
       <div>${name}</div>
     </div>`;
 
-    return stat;
+    return bar;
   }
   const card = `
     <div class="card">
@@ -28,9 +23,9 @@ export const createPokemonCard = (pokemon) => {
     </div>
     ${cardTitle}
         <div class="stats" >
-        ${cardStat("hp")}
-        ${cardStat("attack")}
-        ${cardStat("defense")}
+        ${cartBar("hp")}
+        ${cartBar("attack")}
+        ${cartBar("defense")}
         </div>
     </div>`;
   return card;

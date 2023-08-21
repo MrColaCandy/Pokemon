@@ -1,4 +1,4 @@
-import { gameState } from "../gameState.js";
+import { gameState } from "../game-state/gameState.js";
 
 export const playerInput = { x: 0, y: 0 };
 

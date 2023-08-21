@@ -1,15 +1,17 @@
 import { activateNotification } from "../UI/notifications.js";
 import { playerData } from "../player/playerData.js";
+import { getCurrentPokemon } from "./currentPokemon.js";
 
-export const charge = (pokemonData) => {
+export const charge = () => {
+  const pokemon = getCurrentPokemon();
   if (playerData.items.mona > 0) {
-    if (pokemonData.mona >= pokemonData.maxMona) {
-      pokemonData.mona = pokemonData.maxMona;
+    if (pokemon.currentMona >= pokemon.maxMona) {
+      pokemon.currentMona = pokemon.maxMona;
       activateNotification("Max mona reached!");
       return;
     }
     playerData.items.mona--;
-    pokemonData.mona += 15;
+    pokemon.currentMona += 15;
   } else {
     activateNotification("Not enough mona!");
   }

@@ -11,24 +11,29 @@
   left: 0;
   width: 25%;
   height: 200px;
-  background-color: var(--back-ground-color);
+  background-color: burlywood;
   display: none;
   overflow-x: scroll;
   padding: 10px 16px;
-  border-radius: 16px;
 }
 
 .pokemons .card {
-  background-color: var(--primary-color);
+  background-color: salmon;
   padding: 6px 12px;
   margin: 5px 5px;
   border-radius: 16px;
-  border: var(--primary-color) dashed 1px;
+  border: salmon;
   position: relative;
 }
 .pokemons .card img {
   min-width: 96px;
   min-height: 96px;
+
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 .pokemons .card .card-image {
   position: relative;
@@ -45,4 +50,10 @@
   display: flex;
   justify-content: space-between;
   font-size: xx-small;
+}
+.pokemons-list-mask {
+  -webkit-mask-image: url("../assets/images/scroll.png");
+  mask-image: url("../assets/images/scroll.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }

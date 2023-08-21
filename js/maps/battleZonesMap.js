@@ -1,7 +1,7 @@
 import { context } from "../UI/canvas.js";
 import { battleZones } from "../data/battleZonesData.js";
 import { Collider } from "../models/Collider.js";
-import { offset } from "./map.js";
+import { offset } from "./mainMap.js";
 const battleZoneMap = [];
 export const battleColliders = [];
 for (let i = 0; i < battleZones.length; i += 70) {

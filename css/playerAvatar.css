@@ -1,0 +1,21 @@
+.avatar-background {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  position: relative;
+  overflow: hidden;
+
+  border: 5px solid rgb(150, 97, 27);
+  background-color: burlywood;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.avatar-image {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  top: 15px;
+}

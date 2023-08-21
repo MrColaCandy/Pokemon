@@ -1,15 +1,17 @@
 import { activateNotification } from "../UI/notifications.js";
 import { playerData } from "../player/playerData.js";
+import { getCurrentPokemon } from "./currentPokemon.js";
 
-export const heal = (pokemonData) => {
+export const heal = () => {
+  const pokemon = getCurrentPokemon();
   if (playerData.items.health > 0) {
-    if (pokemonData.health >= pokemonData.maxHealth) {
-      pokemonData.health = pokemonData.maxHealth;
+    if (pokemon.currentHealth >= pokemon.maxHealth) {
+      pokemon.currentHealth = pokemon.maxHealth;
       activateNotification("Max health reached!");
       return;
     }
     playerData.items.health--;
-    pokemonData.health += 15;
+    pokemon.currentHealth += 15;
   } else {
     activateNotification("Not enough health potions!");
   }
