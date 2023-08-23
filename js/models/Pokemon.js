@@ -13,10 +13,11 @@ export class Pokemon {
     this.specialDefense = data.specialDefense;
     this.speed = data.speed;
     this.xp = data.xp;
-    this.maxHealth = data.hp;
-    this.maxMona = 100;
     this.currentHealth = data.hp;
-    this.description = data.description;
+    this.maxHealth = this.currentHealth;
     this.currentMona = 100;
+    this.maxMona = this.currentMona;
+    this.description = data.description;
+    this.defenseType = "normal";
   }
 }

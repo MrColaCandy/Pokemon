@@ -3,6 +3,7 @@ import { hideLoading, showLoading } from "../UI/loadingPanel.js";
 export let isOnline = false;
 
 export const checkConnection = () => {
+  isOnline = window.navigator.onLine;
   setInterval(() => {
     isOnline = window.navigator.onLine;
     if (!isOnline) {
@@ -10,5 +11,5 @@ export const checkConnection = () => {
     } else {
       hideLoading();
     }
-  }, 500);
+  }, 1000);
 };

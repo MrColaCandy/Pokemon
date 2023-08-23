@@ -40,7 +40,7 @@ export const getPokemon = async (id) => {
   return pokemon;
 };
 
-async function get(url) {
+export async function get(url) {
   try {
     const res = await axios.get(url);
     return res;

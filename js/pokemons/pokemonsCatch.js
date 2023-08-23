@@ -9,9 +9,11 @@ import { getCatchingPokemon, setCatchingPokemon } from "./currentPokemon.js";
 import { showAnimation } from "../UI/lottieAnimations.js";
 import { activateNotification } from "../UI/notifications.js";
 import { pokemonsDiv, renderPokemons } from "../UI/pokemonsList.js";
+
 export const findPokemon = async () => {
   if (gameState.battle || gameState.catch) return;
-  const chance = 0.0008;
+
+  const chance = 0.00005;
   if (playerInput.x == 0 && playerInput.y == 0) return;
   if (Math.random() <= chance) {
     gameState.catch = true;
@@ -91,9 +93,7 @@ export const handleCatchSceneEvents = () => {
       closeCatchScene();
     }
     if (e.target.dataset.catchscene === "catch-btn") {
-      if (gameState.catch) {
-        catchPokemon();
-      }
+      catchPokemon();
     }
 
     const id = e.target.dataset.card;

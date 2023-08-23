@@ -6,11 +6,12 @@ import { speed } from "./animationLoop.js";
 import { battleColliders } from "../maps/battleZonesMap.js";
 import { findPokemon } from "../pokemons/pokemonsCatch.js";
 import { gameState } from "../game-state/gameState.js";
-import { isOnline } from "../game-state/connection.js";
+
+import { openBattleScene } from "../scenes/battleScene.js";
 
 export const physics = () => {
   requestAnimationFrame(physics);
-  if (!isOnline) return;
+
   if (gameState.battle || gameState.catch) return;
   findPokemon();
   // detecting battle zones
@@ -19,7 +20,7 @@ export const physics = () => {
       const collider = battleColliders[i];
       if (isCollide(playerSprit, collider)) {
         if (Math.random() < 0.01) {
-          console.log("in battle zone");
+          openBattleScene();
         }
         break;
       }

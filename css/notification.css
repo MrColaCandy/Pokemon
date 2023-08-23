@@ -1,19 +1,30 @@
 .notification {
   position: absolute;
-  bottom: 4px;
-  right: 1px;
-  width: 200px;
+  bottom: 5px;
+  right: 5px;
+  width: 400px;
   height: 50px;
-  background-color: burlywood;
-  color: rgb(117, 71, 33);
   text-align: center;
   opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   pointer-events: none;
   padding: 10px 20px;
   border-radius: 50px;
   border-bottom-right-radius: 0;
   z-index: 300;
+}
+
+.notification img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.notification span {
+  position: absolute;
+  bottom: 150px;
+  right: 150px;
+  background-color: burlywood;
+  padding: 20px;
+  border-radius: 50px;
+  border-bottom-right-radius: 0;
 }

@@ -2,7 +2,6 @@ import { gameState } from "../game-state/gameState.js";
 import { getCatchingPokemon } from "../pokemons/currentPokemon.js";
 
 export const openCatchScene = () => {
-  gameState.catch = true;
   const pokemon = getCatchingPokemon();
   const catchScene = document.createElement("div");
   catchScene.className = "catch-scene";

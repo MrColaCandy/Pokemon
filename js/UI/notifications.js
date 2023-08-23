@@ -1,5 +1,5 @@
 const notification = document.getElementById("notification");
-export const activateNotification = (message, timeOut = 0.8) => {
+export const activateNotification = (message, timeOut = 2) => {
   notification.querySelector("span").innerText = message;
   gsap.to(notification, {
     opacity: 1,

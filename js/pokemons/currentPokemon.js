@@ -1,19 +1,19 @@
 let currentPokemon = null;
-let battlePokemon = null;
+let enemy = null;
 let catchingPokemon = null;
 
 export const setCurrentPokemon = (pokemon) => {
   currentPokemon = pokemon;
 };
-export const setBattlePokemon = (pokemon) => {
-  battlePokemon = pokemon;
+export const setEnemyPokemon = (pokemon) => {
+  enemy = pokemon;
 };
 
 export const getCurrentPokemon = () => {
   return currentPokemon;
 };
-export const getBattlePokemon = () => {
-  return battlePokemon;
+export const getEnemyPokemon = () => {
+  return enemy;
 };
 
 export const getCatchingPokemon = () => {

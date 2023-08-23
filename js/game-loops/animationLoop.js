@@ -1,4 +1,3 @@
-import { isOnline } from "../game-state/connection.js";
 import { gameState } from "../game-state/gameState.js";
 import { battleColliders, drawBattleZones } from "../maps/battleZonesMap.js";
 import { colliders, drawColliders } from "../maps/collisionMap.js";
@@ -20,7 +19,6 @@ const movables = [
 ];
 export const animate = () => {
   requestAnimationFrame(animate);
-  if (!isOnline) return;
   if (gameState.battle || gameState.catch) return;
   drawMap();
   drawColliders();

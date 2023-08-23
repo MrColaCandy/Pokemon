@@ -1,9 +1,11 @@
+import { isOnline } from "../game-state/connection.js";
 import { gameState } from "../game-state/gameState.js";
 
 export const playerInput = { x: 0, y: 0 };
 
 addEventListener("keydown", (e) => {
   if (gameState.battle || gameState.catch) return;
+  if (!isOnline) return;
   if (e.key === "w") {
     playerInput.y = 1;
     playerInput.x = 0;
