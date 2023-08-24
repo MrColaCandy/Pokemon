@@ -1,4 +1,5 @@
 import { showAnimation } from "../UI/lottieAnimations.js";
+import { getCurrentPokemon } from "../pokemons/currentPokemon.js";
 import { get } from "../pokemons/pokemonsApi.js";
 
 export const calculateDamage = async (
@@ -14,10 +15,15 @@ export const calculateDamage = async (
   const currentAttack = attackType === "normal" ? attack : specialAttack;
   const currentDefense = defenseType === "normal" ? defense : specialDefense;
   let damage = 0;
-  if (currentAttack >= currentDefense) {
+  if (currentAttack > currentDefense) {
     damage = currentAttack - currentDefense;
   } else {
-    damage = currentAttack / (currentDefense * 1.1);
+    damage = currentAttack / currentDefense;
+  }
+
+  const player = getCurrentPokemon();
+  if (damage >= player.maxHealth) {
+    damage = player.maxHealth * 0.75;
   }
 
   const defenderType = defender.type.type.name;

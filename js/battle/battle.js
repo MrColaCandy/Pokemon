@@ -9,6 +9,7 @@ import {
 } from "../pokemons/currentPokemon.js";
 import { closeBattleScene, renderStats } from "../scenes/battleScene.js";
 import { gameState } from "../game-state/gameState.js";
+import { createBattleResult } from "./battleResult.js";
 
 export const attack = async ({
   attacker = getCurrentPokemon(),
@@ -31,12 +32,16 @@ export const attack = async ({
   );
   if (damage >= defender.currentHealth) {
     defender.currentHealth = 0;
-    closeBattleScene();
-    if (defender.id === getCurrentPokemon().id) {
-      activateNotification("Your pokemon fainted!");
-    } else {
-      activateNotification("You Won!");
-    }
+    setTimeout(() => {
+      closeBattleScene();
+      if (defender.id === getCurrentPokemon().id) {
+        activateNotification("Your pokemon fainted!");
+        createBattleResult(false);
+      } else {
+        activateNotification("You Won!");
+        createBattleResult(true);
+      }
+    }, 1000);
   } else {
     defender.currentHealth -= damage;
   }
@@ -77,7 +82,6 @@ export const attack = async ({
 
   if (defender.defenseType === "special") {
     removeElement("special-defense");
-    defender.defense -= defender.specialDefense * 0.8;
     defender.defenseType = "normal";
   }
   nextTurn();
@@ -93,7 +97,6 @@ export const defend = (defender) => {
       ? getElement("player-pokemon")
       : getElement("enemy-pokemon");
 
-  defender.defense += defender.specialDefense * 0.8;
   const image = new Image();
   image.src = "../../assets/images/specialDefense.png";
   image.className = "special-defense";
@@ -101,6 +104,7 @@ export const defend = (defender) => {
   defenderDiv.querySelector("#defense").innerHTML = image.outerHTML;
   if (defender.currentMona <= 0) {
     defender.currentMona += 25;
+    defenderDiv.querySelector("#health").innerHTML = renderStats(defender);
   }
   nextTurn();
 };

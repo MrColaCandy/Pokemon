@@ -14,3 +14,12 @@
 @import url("./loadingPanel.css");
 @import url("./battleScene.css");
 @import url("./scene.css");
+
+.row {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.row * {
+  margin: 0 5px;
+}

@@ -4,12 +4,8 @@ import { pokemonBtn, pokemonsDiv } from "../UI/pokemonsList.js";
 import { levelUp } from "../pokemons/pokemonLevelUp.js";
 import { heal } from "../pokemons/pokemonHealing.js";
 import { charge } from "../pokemons/pokemonCharging.js";
-import { catchPokemon } from "../pokemons/pokemonsCatch.js";
-import { closeCatchScene } from "../scenes/catchScene.js";
-import {
-  getCurrentPokemon,
-  setCurrentPokemon,
-} from "../pokemons/currentPokemon.js";
+
+import { getCurrentPokemon } from "../pokemons/currentPokemon.js";
 
 export const modal = document.getElementById("modal");
 const modalBody = modal.querySelector(".modal-body");

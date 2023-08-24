@@ -20,6 +20,7 @@ import {
 } from "../game-state/playerTurn.js";
 
 import { attack, defend } from "../battle/battle.js";
+import { closeBattleResult } from "../battle/battleResult.js";
 
 export const openBattleScene = async () => {
   if (gameState.battle || gameState.catch) return;
@@ -41,21 +42,7 @@ export const openBattleScene = async () => {
     "player-pokemon",
     playerPokemonData.backImage
   );
-  const enemyLevel =
-    getCurrentPokemon().level === 1 ? -25 : getCurrentPokemon().level + 2;
 
-  const enemy = getEnemyPokemon();
-  setEnemyPokemon({
-    ...enemy,
-    maxHealth: enemyLevel + enemy.maxHealth,
-    maxMona: enemyLevel + enemy.maxMona,
-    currentHealth: enemyLevel + enemy.currentHealth,
-    currentMona: enemyLevel + enemy.currentMona,
-    attack: enemyLevel + enemy.attack,
-    defense: enemyLevel + enemy.defense,
-    specialAttack: enemyLevel + enemy.specialAttack,
-    specialDefense: enemyLevel + enemy.specialDefense,
-  });
   const enemyPokemon = createPokemon(
     enemyPokemonData,
     "enemy-pokemon",
@@ -164,10 +151,16 @@ export function renderStats(data) {
 export const handleBattleEvents = () => {
   window.addEventListener("click", (e) => {
     const id = e.target.id;
+    if (id === "battle-result-btn") {
+      closeBattleResult();
+    }
     if (!id) return;
     if (!isMyTurn) return;
     if (id === "attack-button") {
-      attack({ attackType: "normal" });
+      attack({
+        attackType: "normal",
+        defenseType: getEnemyPokemon().defenseType,
+      });
     }
 
     if (id === "defense-button") {
