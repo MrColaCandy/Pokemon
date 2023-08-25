@@ -1,40 +1,32 @@
 .btn {
-  padding: 5px 10px;
+  padding: calc(var(--space-small) / 2) var(--space-small);
   outline: none;
-  border: 3px solid rgb(142, 103, 52);
-  color: rgb(161, 117, 59);
+  border: calc(var(--space-small) / 4) solid var(--color-text);
+  color: var(--color-text);
   background-color: transparent;
-  border-radius: 3px;
+  border-radius: calc(var(--space-small) / 4);
   transition: transform 200ms;
 }
-
+.btn.btn-small {
+  font-size: small;
+  padding: calc(var(--space-small) / 4);
+}
 .close-btn {
-  width: 25px;
-  height: 25px;
+  width: var(--space-medium);
+  height: var(--space-medium);
 
-  border-radius: 5px;
+  border-radius: calc(var(--space-small) / 4);
   position: absolute;
-  right: 10px;
-  top: 10px;
-  border: 3px solid rgb(164, 113, 41);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  right: var(--space-small);
+  top: var(--space-small);
+  border: 3px solid var(--color-text);
   font-family: sans-serif;
   font-size: small;
   cursor: pointer;
-  color: rgb(139, 80, 35);
-  background-color: burlywood;
+  color: var(--color-text);
+  background-color: var(--color-background-wood);
 }
 
 .btn:active {
-  transform: scale(0.95);
-}
-
-.btn.leave-btn,
-.btn.catch-btn {
-  color: rgb(186, 88, 78);
-  background-color: transparent;
-  border: 4px solid rgb(182, 84, 73);
-  font-weight: bolder;
+  transform: scale(0.98);
 }

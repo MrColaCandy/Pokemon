@@ -8,18 +8,8 @@
 @import url("./notification.css");
 @import url("./playerAvatar.css");
 @import url("./pokemonList.css");
-@import url("./spinner.css");
 @import url("./throwBallAnimation.css");
 @import url("./throwBallAnimation.css");
 @import url("./loadingPanel.css");
 @import url("./battleScene.css");
 @import url("./scene.css");
-
-.row {
-  display: flex;
-  justify-items: center;
-  align-items: center;
-}
-.row * {
-  margin: 0 5px;
-}

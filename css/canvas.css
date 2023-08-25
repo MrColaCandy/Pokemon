@@ -1,8 +1,4 @@
-#base {
-  position: relative;
-  margin-top: 50px;
-}
 canvas {
-  width: 1250px;
-  height: 600px;
+  width: 1500px;
+  height: 700px;
 }

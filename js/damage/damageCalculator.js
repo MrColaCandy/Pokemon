@@ -15,11 +15,13 @@ export const calculateDamage = async (
   const currentAttack = attackType === "normal" ? attack : specialAttack;
   const currentDefense = defenseType === "normal" ? defense : specialDefense;
   let damage = 0;
+  const chance = attacker.speed / 255;
   if (currentAttack > currentDefense) {
-    damage = currentAttack - currentDefense;
+    damage = currentAttack * 2 - currentDefense;
   } else {
-    damage = currentAttack / currentDefense;
+    damage = (currentAttack * currentAttack) / currentDefense;
   }
+  damage *= chance;
 
   const player = getCurrentPokemon();
   if (damage >= player.maxHealth) {

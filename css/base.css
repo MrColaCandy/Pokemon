@@ -1,10 +1,58 @@
+:root {
+  --space-small: 10px;
+  --space-medium: 20px;
+  --space-large: 30px;
+
+  --space-xlarge: 100px;
+  --space-xxlarge: 200px;
+  --space-xxxlarge: 300px;
+  --space-xxxxlarge: 400px;
+
+  --color-text: rgb(133, 85, 23);
+  --color-background-wood: burlywood;
+  --color-background-black: rgba(0, 0, 0, 0.782);
+}
 body {
-  width: 100vw;
+  overflow: hidden;
+  background-color: black;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#base {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 * {
   margin: 0;
   padding: 0;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row * {
+  margin: 0 5px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.self-center {
+  text-align: center;
+  margin: var(--space-small) auto;
 }

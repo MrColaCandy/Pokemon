@@ -15,7 +15,7 @@ export const createBattleResult = (isWon) => {
   const result = createElement({
     elementName: "div",
     id: "result",
-    className: "result",
+    className: "col",
     innerHTML: `
     <div class="row">
     <img src='../../assets/images/hpPotion.png'/>
@@ -29,18 +29,18 @@ export const createBattleResult = (isWon) => {
   });
   const footer = createElement({
     elementName: "button",
-    className: "btn",
+    className: "btn self-center",
     id: "battle-result-btn",
     innerHTML: "OK",
   });
   const battleResult = createElement({
     elementName: "div",
-    className: "battle-result",
+    className: "battle-result center col",
     id: "battle-result",
     innerHTML: `
     ${title.outerHTML}
     ${result.outerHTML}
-    <div class="row" >${footer.outerHTML}</div>
+    <div >${footer.outerHTML}</div>
     `,
   });
   getElement("base").append(battleResult);

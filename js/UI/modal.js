@@ -101,7 +101,7 @@ export const openModal = () => {
     <p>${pokemon.description[0]}</p>
  
   </div> 
-   <div data-modal="close" class="close-btn" >X<div>    
+   <div data-modal="close" class="close-btn col" >X<div>    
   `;
 
   modalFooter.innerHTML = `

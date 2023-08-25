@@ -7,6 +7,7 @@ import {
   getCurrentPokemon,
   getEnemyPokemon,
 } from "../pokemons/currentPokemon.js";
+import { playerData } from "../player/playerData.js";
 import { closeBattleScene, renderStats } from "../scenes/battleScene.js";
 import { gameState } from "../game-state/gameState.js";
 import { createBattleResult } from "./battleResult.js";
@@ -36,10 +37,17 @@ export const attack = async ({
       closeBattleScene();
       if (defender.id === getCurrentPokemon().id) {
         activateNotification("Your pokemon fainted!");
+        playerData.items.health += 4;
+        playerData.items.mona += 4;
+        getCurrentPokemon().xp += 100;
+
         createBattleResult(false);
       } else {
         activateNotification("You Won!");
         createBattleResult(true);
+        playerData.items.health += 10;
+        playerData.items.mona += 10;
+        getCurrentPokemon().xp += 250;
       }
     }, 1000);
   } else {
@@ -55,7 +63,7 @@ export const attack = async ({
     defender.id === getCurrentPokemon().id
       ? getElement("player-pokemon")
       : getElement("enemy-pokemon");
-  const DefenderStats = defenderDiv.querySelector("#health");
+  const DefenderStats = defenderDiv.querySelector("#stats");
   DefenderStats.innerHTML = renderStats(defender);
 
   const attackAnimation = createAttackAnimation(attackType, "attack-animation");
@@ -65,7 +73,7 @@ export const attack = async ({
       ? getElement("player-pokemon")
       : getElement("enemy-pokemon");
   const attackerImage = attackerDiv.querySelector("#image");
-  const attackerStats = attackerDiv.querySelector("#health");
+  const attackerStats = attackerDiv.querySelector("#stats");
 
   attackerStats.innerHTML = renderStats(attacker);
   gsap.to(attackerImage, {
@@ -101,10 +109,11 @@ export const defend = (defender) => {
   image.src = "../../assets/images/specialDefense.png";
   image.className = "special-defense";
   image.id = "special-defense";
+  console.log(defenderDiv);
   defenderDiv.querySelector("#defense").innerHTML = image.outerHTML;
   if (defender.currentMona <= 0) {
     defender.currentMona += 25;
-    defenderDiv.querySelector("#health").innerHTML = renderStats(defender);
+    defenderDiv.querySelector("#stats").innerHTML = renderStats(defender);
   }
   nextTurn();
 };

@@ -11,7 +11,7 @@ import { playerInput } from "../player/playerInput.js";
 
 export const speed = { value: 1 };
 
-const movables = [
+export const backgrounds = [
   ...colliders,
   ...battleColliders,
   foregroundSprite,
@@ -25,7 +25,7 @@ export const animate = () => {
   drawBattleZones();
   drawPlayer();
   drawForeground();
-  movables.forEach((m) => {
+  backgrounds.forEach((m) => {
     m.position.x -= playerInput.x * speed.value;
     m.position.y += playerInput.y * speed.value;
   });

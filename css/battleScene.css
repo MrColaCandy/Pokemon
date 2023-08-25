@@ -1,39 +1,33 @@
 .player-pokemon {
   position: absolute;
-  bottom: -100px;
-  left: 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  bottom: calc(-1 * var(--space-medium));
+  left: var(--space-small);
 }
+
 .enemy-pokemon {
   position: absolute;
-  bottom: 200px;
-  right: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  bottom: var(--space-xxlarge);
+  right: var(--space-xxlarge);
 }
+
 .player-pokemon img {
-  width: 500px;
-  height: 500px;
+  width: var(--space-xxxlarge);
+  height: var(--space-xxxlarge);
 }
 .enemy-pokemon img {
-  width: 200px;
-  height: 200px;
+  width: var(--space-xxlarge);
+  height: var(--space-xxlarge);
 }
 .buttons-group {
-  margin-top: 25px;
+  margin-top: var(--space-medium);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.782);
-  padding: 10px;
+  background-color: var(--color-background-black);
+  padding: var(--space-small);
 }
 .buttons-group div {
-  margin: 0 16px;
+  margin: 0 var(--space-small);
   cursor: pointer;
 }
 
@@ -42,14 +36,14 @@
 }
 .my-turn {
   position: absolute;
-  bottom: 25px;
-  left: 125px;
+  top: 45px;
+  left: 10px;
 }
 
 .enemy-turn {
   position: absolute;
-  bottom: 200px;
-  left: 850px;
+  top: 45px;
+  left: 750px;
 }
 .attack-animation {
   position: absolute;
@@ -63,42 +57,28 @@
 }
 
 .battle-result {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 210px;
-  height: 200px;
-  background-color: transparent;
   background-image: url("../assets/images/battleResult.png");
+  background-color: var(--color-background-wood);
   background-repeat: no-repeat;
   background-size: cover;
-  color: rgb(146, 95, 28);
+  width: calc(var(--space-xxlarge) + 10px);
+  height: var(--space-xxlarge);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  color: var(--color-text);
 }
 
 .battle-result h3 {
   text-align: center;
 }
 .battle-result img {
-  width: 25px;
-  height: 25px;
+  width: var(--space-medium);
+  height: var(--space-medium);
 }
 
 .battle-result .result {
-  margin-top: 16px;
+  margin-top: var(--space-medium);
 }
 .battle-result .btn {
   text-align: center;
-  margin: 16px auto;
-}
-.battle-result-mask {
-  -webkit-mask-image: url("../assets/images/scroll.png");
-  mask-image: url("../assets/images/scroll.png");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+  margin: var(--space-medium) auto;
 }

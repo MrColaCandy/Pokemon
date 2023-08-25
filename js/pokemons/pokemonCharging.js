@@ -5,7 +5,7 @@ import { getCurrentPokemon } from "./currentPokemon.js";
 export const charge = () => {
   const pokemon = getCurrentPokemon();
   if (playerData.items.mona > 0) {
-    if (pokemon.currentMona >= pokemon.maxMona) {
+    if (pokemon.currentMona >= pokemon.maxMona - 15) {
       pokemon.currentMona = pokemon.maxMona;
       activateNotification("Max mona reached!");
       return;

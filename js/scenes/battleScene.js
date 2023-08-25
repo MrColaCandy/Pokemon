@@ -13,25 +13,27 @@ import {
   removeElement,
 } from "../Utils/elementUtil.js";
 import { createBar } from "../UI/bar.js";
-import {
-  isMyTurn,
-  nextTurn,
-  startTurnTimer,
-} from "../game-state/playerTurn.js";
+import { isMyTurn, startTurnTimer } from "../game-state/playerTurn.js";
 
 import { attack, defend } from "../battle/battle.js";
 import { closeBattleResult } from "../battle/battleResult.js";
+import { backgrounds } from "../game-loops/animationLoop.js";
+import { activateNotification } from "../UI/notifications.js";
 
 export const openBattleScene = async () => {
   if (gameState.battle || gameState.catch) return;
-
+  const playerPokemonData = getCurrentPokemon();
+  if (playerPokemonData.currentHealth < playerPokemonData.maxHealth) {
+    activateNotification("Your pokemon is in a bad shape!");
+    return;
+  }
   showAnimation(
     "../../assets/animations/spinner.json",
     "battle-spinner",
     false
   );
   gameState.battle = true;
-  const playerPokemonData = getCurrentPokemon();
+
   const randomId = Math.round(Math.random() * 100000) % 500;
   const enemyPokemonData = await getPokemon(randomId === 0 ? 1 : randomId);
   setEnemyPokemon(enemyPokemonData);
@@ -39,14 +41,14 @@ export const openBattleScene = async () => {
   const playerPokemon = createPokemon(
     playerPokemonData,
     "player-pokemon",
-    "player-pokemon",
+    "player-pokemon col",
     playerPokemonData.backImage
   );
 
   const enemyPokemon = createPokemon(
     enemyPokemonData,
     "enemy-pokemon",
-    "enemy-pokemon",
+    "enemy-pokemon col",
     enemyPokemonData.frontImage
   );
 
@@ -83,14 +85,17 @@ export const openBattleScene = async () => {
     id: "battle-timer",
     className: "battle-timer my-turn",
   });
-  createScene(playerPokemon, enemyPokemon, buttonsGroup, timerDiv);
   startTurnTimer();
+  createScene(playerPokemon, enemyPokemon, buttonsGroup, timerDiv);
   removeElement("battle-spinner");
 };
 
 export const closeBattleScene = () => {
   removeElement("battle-scene");
   gameState.battle = false;
+  backgrounds.forEach((b) => {
+    b.position.y -= 48 * 2;
+  });
 };
 
 function createScene(playerPokemon, enemyPokemon, buttonsGroup, timerDiv) {
@@ -121,7 +126,7 @@ function createPokemon(data, id, className, image) {
   const playerPokemonImage = image;
   const playerPokemon = createElement({
     className: className,
-    id: className,
+    id: id,
     innerHTML: `
     ${playerStats.outerHTML}
     <div id="image" >${playerPokemonImage.outerHTML}</div>
@@ -132,7 +137,7 @@ function createPokemon(data, id, className, image) {
 }
 export function renderStats(data) {
   return `
-    <div id="health">
+    <div id="stats">
     ${
       createBar(
         (data.currentHealth / data.maxHealth) * 100,

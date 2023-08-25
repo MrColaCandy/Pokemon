@@ -5,7 +5,7 @@ import { getCurrentPokemon } from "./currentPokemon.js";
 export const heal = () => {
   const pokemon = getCurrentPokemon();
   if (playerData.items.health > 0) {
-    if (pokemon.currentHealth >= pokemon.maxHealth) {
+    if (pokemon.currentHealth >= pokemon.maxHealth - 15) {
       pokemon.currentHealth = pokemon.maxHealth;
       activateNotification("Max health reached!");
       return;

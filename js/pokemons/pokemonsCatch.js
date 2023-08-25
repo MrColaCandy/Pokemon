@@ -13,7 +13,7 @@ import { pokemonsDiv, renderPokemons } from "../UI/pokemonsList.js";
 export const findPokemon = async () => {
   if (gameState.battle || gameState.catch) return;
 
-  const chance = 0.00005;
+  const chance = 0.08;
   if (playerInput.x == 0 && playerInput.y == 0) return;
   if (Math.random() <= chance) {
     gameState.catch = true;
@@ -50,14 +50,14 @@ export const catchPokemon = () => {
     }, 500);
     return;
   }
-  const catchBtn = document.querySelector('[data-catchscene="catch-btn"]');
-  const leaveBtn = document.querySelector('[data-catchscene="leave-btn"]');
+  const catchBtn = document.querySelector('[data-catch="catch-btn"]');
+  const leaveBtn = document.querySelector('[data-catch="leave-btn"]');
   leaveBtn.onclick = () => {
     tries = 10;
   };
   catchBtn.innerText = "CATCH! " + tries;
   catchBtn.disabled = true;
-  const character = document.querySelector('[data-catchscene="character"]');
+  const character = document.querySelector('[data-catch="character"]');
   character.classList.add("throw-ball-active");
   setTimeout(() => {
     catchBtn.disabled = false;
@@ -89,18 +89,11 @@ const addPokemonToList = () => {
 
 export const handleCatchSceneEvents = () => {
   addEventListener("click", (e) => {
-    if (e.target.dataset.catchscene === "leave-btn") {
+    if (e.target.dataset.catch === "leave-btn") {
       closeCatchScene();
     }
-    if (e.target.dataset.catchscene === "catch-btn") {
+    if (e.target.dataset.catch === "catch-btn") {
       catchPokemon();
-    }
-
-    const id = e.target.dataset.card;
-    if (id) {
-      const pokemon = playerData.playerPokemons.find((p) => p.id == id);
-      setCurrentPokemon(pokemon);
-      openModal();
     }
   });
 };

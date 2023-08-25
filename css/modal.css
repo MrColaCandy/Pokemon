@@ -12,15 +12,15 @@
   background-image: url("../assets/images/ModalBackground.png");
   background-size: contain;
   background-repeat: no-repeat;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: calc(var(--space-small) / 4);
+  padding: var(--space-small);
 }
 .modal .stats {
   position: absolute;
   top: 200px;
   left: 50px;
-  width: 36%;
-  color: rgb(162, 104, 27);
+  width: 255px;
+  color: var(--color-text);
 }
 .modal .current-stats {
   position: absolute;
@@ -28,21 +28,18 @@
   left: 80px;
 }
 .modal .modal-body .avatar img {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   position: absolute;
-  left: -120px;
-  top: 50px;
+  left: -135px;
+  top: 70px;
 }
 .modal .modal-body .avatar {
   position: absolute;
   top: 15px;
-  left: 230px;
+  left: 250px;
   font-weight: bold;
-  color: rgb(165, 122, 66);
-}
-.modal .modal-body {
-  width: 75%;
+  color: var(--color-text);
 }
 
 .modal .modal-body .powers,
@@ -59,10 +56,9 @@
   text-align: left;
   width: 100%;
   position: absolute;
-  font-size: 1rem;
   top: 15px;
   left: 50px;
-  color: rgb(154, 112, 58);
+  color: var(--color-text);
   font-weight: bolder;
 }
 .modal .modal-footer {
@@ -78,18 +74,18 @@
   position: absolute;
   top: 30px;
   left: 420px;
-  width: 32%;
+  width: 240px;
   justify-content: space-between;
   align-items: center;
-  color: rgb(132, 101, 59);
+  color: var(--color-text);
 }
 .modal .resources h3 {
-  margin-bottom: 16px;
+  margin-bottom: var(--space-medium);
 }
 .hp img,
 .mona img {
-  width: 25px;
-  height: 25px;
+  width: var(--space-medium);
+  height: var(--space-medium);
 }
 
 .xp,
@@ -100,12 +96,12 @@
   align-items: center;
 }
 .modal-description {
-  width: 35%;
-  color: rgb(138, 100, 50);
+  width: 250px;
+  color: var(--color-text);
   position: absolute;
   right: 55px;
   bottom: 250px;
 }
 .modal-description h3 {
-  margin-bottom: 16px;
+  margin-bottom: var(--space-medium);
 }
