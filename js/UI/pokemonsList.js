@@ -3,12 +3,13 @@ import { createPokemonCard } from "./pokemonCard.js";
 import { scrollX } from "./scrollDrag.js";
 import { canvas } from "./canvas.js";
 import { setCurrentPokemon } from "../pokemons/currentPokemon.js";
-import { openModal } from "./modal.js";
+import { closeModal, openModal } from "./modal.js";
+import { getPokemon } from "../pokemons/pokemonsApi.js";
 
 export const pokemonsDiv = document.getElementById("pokemons");
 export const pokemonBtn = document.getElementById("pokemon-btn");
 
-export const renderPokemons = () => {
+export const renderPokemons = async () => {
   pokemonsDiv.innerHTML = "";
   pokemonsDiv.classList.add("pokemons-list-mask");
   pokemonBtn.style.display = "none";
@@ -17,7 +18,7 @@ export const renderPokemons = () => {
   playerData.playerPokemons.forEach((p) => {
     const card = createPokemonCard(p);
 
-    pokemonsDiv.innerHTML += card;
+    pokemonsDiv.append(card);
   });
 };
 export function closePokemonList() {
@@ -37,12 +38,13 @@ export const handlePokemonListEvents = () => {
   });
 
   window.addEventListener("click", (e) => {
-    const dataset = e.target.dataset.card;
-    if (dataset) {
-      const pokemon = playerData.playerPokemons.find((p) => p.id == dataset);
-      setCurrentPokemon(pokemon);
+    const id = e.target.dataset.card;
+    if (!id) return;
+    setCurrentPokemon(playerData.playerPokemons.find((p) => p.id == id));
+    if (e.target.nodeName === "BUTTON") {
       renderPokemons();
-      if (e.target.id !== "select") openModal();
+      closeModal();
+      openModal();
     }
   });
 };

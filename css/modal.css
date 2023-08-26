@@ -1,8 +1,8 @@
 :root {
   --modal-width: calc(var(--canvas-width) - 800px);
   --modal-height: calc(var(--canvas-height) - 200px);
-  --modal-inner-width: 270px;
-  --modal-inner-height: 300px;
+  --modal-inner-width: 240px;
+  --modal-inner-height: 240px;
 }
 
 .modal {
@@ -29,7 +29,7 @@
   height: var(--modal-inner-height);
   position: absolute;
   top: 45px;
-  left: calc(var(--modal-width) - var(--modal-inner-width) - 35px);
+  left: calc(var(--modal-width) - var(--modal-inner-width) - 40px);
 }
 .modal .inventory img {
   width: var(--space-medium);
@@ -43,12 +43,12 @@
   width: var(--modal-inner-width);
   height: var(--modal-inner-height);
   position: absolute;
-  top: 45px;
-  left: 35px;
+  top: 25px;
+  left: 60px;
 }
 
 .modal .buttons-div {
-  margin-top: var(--space-large);
+  margin-top: var(--space-small);
 }
 
 .modal .level-info {

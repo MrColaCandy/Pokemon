@@ -8,12 +8,8 @@ export const getPokemon = async (id) => {
 
   pokemon.id = data.id;
   pokemon.level = 1;
-  const frontImage = new Image();
-  frontImage.src = data.sprites.front_default;
-  pokemon.frontImage = frontImage;
-  const backImage = new Image();
-  backImage.src = data.sprites.back_default;
-  pokemon.backImage = backImage;
+  pokemon.frontImage = data.sprites.front_default;
+  pokemon.backImage = data.sprites.back_default;
   pokemon.xp = data.base_experience;
   pokemon.hp = data.stats[0].base_stat;
   pokemon.attack = data.stats[1].base_stat;

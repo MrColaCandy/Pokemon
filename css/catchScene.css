@@ -24,13 +24,16 @@
   font-weight: bolder;
 }
 .catch-scene-btns {
-  width: calc(var(--space-xxxxlarge) * 2);
+  width: calc(var(--space-xxlarge));
   position: absolute;
   bottom: var(--space-medium);
-  right: 50%;
+  right: 75%;
   transform: translateX(50%);
   background-color: var(--color-background-black);
   border-radius: calc(var(--space-small) / 4);
   padding: calc(var(--space-small) / 2);
   z-index: 101;
+}
+.catch-scene-btns > * {
+  margin: 0 var(--space-small);
 }

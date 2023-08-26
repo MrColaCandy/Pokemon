@@ -7,7 +7,7 @@ import {
 export const createBattleResult = (isWon) => {
   const title = createElement({
     elementName: "h3",
-    className: "title",
+    className: "title center",
     id: "battle-result-title",
     innerHTML: isWon ? "YOU WON!" : "YOU LOST!",
   });
@@ -15,13 +15,13 @@ export const createBattleResult = (isWon) => {
   const result = createElement({
     elementName: "div",
     id: "result",
-    className: "col",
+    className: "col-center",
     innerHTML: `
-    <div class="row">
+    <div class="center">
     <img src='../../assets/images/hpPotion.png'/>
     <div>health x${isWon ? 10 : 4}</div>
     </div>
-    <div class="row">
+    <div class="center">
      <img src='../../assets/images/monaPotion.png'/>
     <div>mona x${isWon ? 10 : 4}</div>
     </div>
@@ -29,18 +29,18 @@ export const createBattleResult = (isWon) => {
   });
   const footer = createElement({
     elementName: "button",
-    className: "btn self-center",
+    className: "btn center",
     id: "battle-result-btn",
     innerHTML: "OK",
   });
   const battleResult = createElement({
     elementName: "div",
-    className: "battle-result center col",
+    className: "battle-result col-center",
     id: "battle-result",
     innerHTML: `
-    ${title.outerHTML}
-    ${result.outerHTML}
-    <div >${footer.outerHTML}</div>
+      ${title.outerHTML}
+      ${result.outerHTML}
+      <div >${footer.outerHTML}</div>
     `,
   });
   getElement("base").append(battleResult);

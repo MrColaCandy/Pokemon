@@ -25,8 +25,11 @@
   border: 1px solid var(--color-text);
   position: relative;
 }
+.card .btn {
+  margin-top: var(--space-small);
+}
 .pokemons .card.selected {
-  border: 1px solid salmon;
+  border: 3px double salmon;
 }
 .pokemons .card img {
   min-width: 96px;

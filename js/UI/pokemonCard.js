@@ -1,24 +1,20 @@
+import { createElement } from "../Utils/elementUtil.js";
 import { getCurrentPokemon } from "../pokemons/currentPokemon.js";
 
 export const createPokemonCard = (pokemon) => {
-  const image = pokemon.frontImage;
-  image.id = pokemon.id;
-  image.alt = pokemon.name;
-  image.setAttribute("data-card", pokemon.id);
+  const src = pokemon.frontImage;
+  const card = createElement({
+    className: "card col-center",
+    id: pokemon.id,
+    innerHTML: `
+    <div data-card="${pokemon.id}"><img src="${src}"/></div>
+    <h3>${pokemon.name}</h3>
+    <button  data-card="${pokemon.id}" class="btn btn-small">SELECT</button>
+    `,
+  });
 
-  const cardTitle = `<h6 class="self-center">${pokemon.name}</h6>`;
+  if (pokemon.id === getCurrentPokemon().id) card.classList.add("selected");
+  else card.remove("selected");
 
-  const card = `
-    <div class="card ${pokemon.id == getCurrentPokemon().id ? "selected" : ""}">
-    <div class="card-image">
-    ${image.outerHTML}
-    </div >
-       ${cardTitle}
-      <div id="select" data-card="${
-        pokemon.id
-      }" class="btn btn-small self-center">
-       SELECT
-      </div>
-    </div>`;
   return card;
 };

@@ -18,7 +18,7 @@ export const openModal = () => {
   const pokemon = getCurrentPokemon();
   const itemsData = playerData.items;
   const buttonsDiv = createElement({
-    className: "buttons-div row",
+    className: "buttons-div between",
     id: "buttons-div",
     innerHTML: `
     ${
@@ -70,25 +70,25 @@ export const openModal = () => {
     className: "stats col",
     id: "stats",
     innerHTML: `
-   <div class="row">
-   ${getStatBar({ stat: "hp" }).outerHTML} hp: ${pokemon.hp}
+   <div class="between">
+   ${getStatBar({ stat: "hp" }).outerHTML} <div>hp: ${pokemon.hp}</div>
    </div>
-   <div class="row">
+   <div class="between">
    ${getStatBar({ stat: "attack" }).outerHTML} attack: ${pokemon.attack}
     </div>
-   <div class="row">
+   <div class="between">
    ${getStatBar({ stat: "defense" }).outerHTML} defense: ${pokemon.defense}
     </div>
-   <div class="row">
+   <div class="between">
    ${getStatBar({ stat: "specialAttack" }).outerHTML} special attack: ${
       pokemon.specialAttack
     }
     </div>
-   <div class="row">${
+   <div class="between">${
      getStatBar({ stat: "specialDefense" }).outerHTML
    } special defense : ${pokemon.specialDefense}
    </div>
-   <div class="row">${getStatBar({ stat: "speed" }).outerHTML} speed: ${
+   <div class="between">${getStatBar({ stat: "speed" }).outerHTML} speed: ${
       pokemon.speed
     }
     </div>
@@ -104,17 +104,17 @@ export const openModal = () => {
     id: "inventory",
     innerHTML: `
     <h3>Inventory</h3>
-    <div class="row">
+    <div class="between">
        ${healthImg.outerHTML}
        <div>hp  x${itemsData.health}</div>
     </div>
-    <div class=row>
+    <div class="between">
       ${monaImg.outerHTML}
       <div>mona  x${itemsData.mona}</div>
     </div>
     `,
   });
-  const image = pokemon.frontImage;
+  const imageSrc = pokemon.frontImage;
 
   const description = createElement({
     className: "description",
@@ -140,7 +140,7 @@ export const openModal = () => {
     innerHTML: `
     ${condition.outerHTML}
     <div class="col pokemon-image">
-    ${image.outerHTML}
+    <img src="${imageSrc}" />
     </div>
     <div class="col level-info">
     <div>XP: ${pokemon.xp}</div>
@@ -151,7 +151,7 @@ export const openModal = () => {
     `,
   });
   const modal = createElement({
-    className: "modal row",
+    className: "modal between",
     id: "modal",
     innerHTML: `
     ${leftPage.outerHTML}
@@ -172,15 +172,18 @@ export const handleModalEvents = () => {
 
     if (e.target.id === "level-up-btn") {
       levelUp();
+      closeModal();
       openModal();
     }
 
     if (e.target.id === "heal-btn") {
       heal();
+      closeModal();
       openModal();
     }
     if (e.target.id === "charge-btn") {
       charge();
+      closeModal();
       openModal();
     }
   });

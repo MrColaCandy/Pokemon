@@ -25,12 +25,23 @@ export const attack = async ({
     }
     return;
   }
+  const attackBtn = getElement("attack-button");
+  const defenseBtn = getElement("defense-button");
+  const specialBtn = getElement("special-attack-button");
+  attackBtn.disabled = true;
+  defenseBtn.disabled = true;
+  specialBtn.disabled = true;
   const damage = await calculateDamage(
     attacker,
     defender,
     attackType,
     defenseType
   );
+  setTimeout(() => {
+    attackBtn.disabled = false;
+    defenseBtn.disabled = false;
+    specialBtn.disabled = false;
+  }, 2000);
   if (damage >= defender.currentHealth) {
     defender.currentHealth = 0;
     setTimeout(() => {
@@ -67,7 +78,9 @@ export const attack = async ({
   DefenderStats.innerHTML = renderStats(defender);
 
   const attackAnimation = createAttackAnimation(attackType, "attack-animation");
-  defenderDiv.append(attackAnimation);
+  if (getElement("attack-animation") === null) {
+    defenderDiv.append(attackAnimation);
+  }
   const attackerDiv =
     attacker.id === getCurrentPokemon().id
       ? getElement("player-pokemon")
@@ -92,7 +105,9 @@ export const attack = async ({
     removeElement("special-defense");
     defender.defenseType = "normal";
   }
-  nextTurn();
+  setTimeout(() => {
+    nextTurn();
+  }, 2000);
 };
 
 export const defend = (defender) => {
@@ -115,5 +130,7 @@ export const defend = (defender) => {
     defender.currentMona += 25;
     defenderDiv.querySelector("#stats").innerHTML = renderStats(defender);
   }
-  nextTurn();
+  setTimeout(() => {
+    nextTurn();
+  }, 2000);
 };

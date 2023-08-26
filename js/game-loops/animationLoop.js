@@ -25,8 +25,8 @@ export const animate = () => {
   drawBattleZones();
   drawPlayer();
   drawForeground();
-  backgrounds.forEach((m) => {
-    m.position.x -= playerInput.x * speed.value;
-    m.position.y += playerInput.y * speed.value;
+  backgrounds.forEach((b) => {
+    b.position.x -= playerInput.x * speed.value;
+    b.position.y += playerInput.y * speed.value;
   });
 };

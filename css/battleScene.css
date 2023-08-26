@@ -26,7 +26,7 @@
   background-color: var(--color-background-black);
   padding: var(--space-small);
 }
-.buttons-group div {
+.buttons-group button {
   margin: 0 var(--space-small);
   cursor: pointer;
 }
@@ -36,14 +36,14 @@
 }
 .my-turn {
   position: absolute;
-  top: 45px;
-  left: 20px;
+  top: 40px;
+  left: 40px;
 }
 
 .enemy-turn {
   position: absolute;
-  top: 45px;
-  left: calc(var(--canvas-width) - 280px);
+  top: 40px;
+  left: calc(var(--canvas-width) - 300px);
 }
 .attack-animation {
   position: absolute;
@@ -57,18 +57,23 @@
 }
 
 .battle-result {
+  width: calc(var(--space-xxlarge) + 10px);
+  height: var(--space-xxlarge);
+  color: var(--color-text);
   background-image: url("../assets/images/battleResult.png");
   background-color: var(--color-background-wood);
   background-repeat: no-repeat;
   background-size: cover;
-  width: calc(var(--space-xxlarge) + 10px);
-  height: var(--space-xxlarge);
-
-  color: var(--color-text);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--space-large);
 }
 
 .battle-result h3 {
   text-align: center;
+  margin-bottom: var(--space-large);
 }
 .battle-result img {
   width: var(--space-medium);

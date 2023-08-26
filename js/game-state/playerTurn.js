@@ -11,15 +11,26 @@ export const nextTurn = () => {
     isMyTurn = true;
     return;
   }
+  const timer = getElement("battle-timer");
+  const attackBtn = getElement("attack-button");
+  const defenseBtn = getElement("defense-button");
+  const specialBtn = getElement("special-attack-button");
+
   start = max;
   if (turn % 2 === 0) {
     isMyTurn = true;
-    getElement("battle-timer").classList.add("my-turn");
-    getElement("battle-timer").classList.remove("enemy-turn");
+    timer.classList.add("my-turn");
+    timer.classList.remove("enemy-turn");
+    attackBtn.disabled = false;
+    defenseBtn.disabled = false;
+    specialBtn.disabled = false;
   } else {
     isMyTurn = false;
-    getElement("battle-timer").classList.add("enemy-turn");
-    getElement("battle-timer").classList.remove("my-turn");
+    timer.classList.add("enemy-turn");
+    timer.classList.remove("my-turn");
+    attackBtn.disabled = true;
+    defenseBtn.disabled = true;
+    specialBtn.disabled = true;
   }
   turn++;
 
@@ -32,7 +43,7 @@ export const startTurnTimer = () => {
     return;
   }
   requestAnimationFrame(startTurnTimer);
-
+  const timer = getElement("battle-timer");
   delay++;
   if (delay % 10 !== 0) return;
   start--;
@@ -40,10 +51,5 @@ export const startTurnTimer = () => {
     start = max;
     nextTurn();
   }
-  getElement("battle-timer").innerHTML = createBar(
-    start,
-    "5px",
-    max,
-    "red"
-  ).outerHTML;
+  timer.innerHTML = createBar(start, 10, max, "red").outerHTML;
 };

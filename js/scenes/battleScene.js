@@ -41,31 +41,31 @@ export const openBattleScene = async () => {
   const playerPokemon = createPokemon(
     playerPokemonData,
     "player-pokemon",
-    "player-pokemon col",
+    "player-pokemon col-center",
     playerPokemonData.backImage
   );
 
   const enemyPokemon = createPokemon(
     enemyPokemonData,
     "enemy-pokemon",
-    "enemy-pokemon col",
+    "enemy-pokemon col-center",
     enemyPokemonData.frontImage
   );
 
   const attackButton = createElement({
-    elementName: "div",
+    elementName: "button",
     className: "btn",
     id: "attack-button",
     innerHTML: "ATTACK",
   });
   const specialAttackButton = createElement({
-    elementName: "div",
+    elementName: "button",
     className: "btn",
     id: "special-attack-button",
     innerHTML: "POWER ATTACK",
   });
   const defenseButton = createElement({
-    elementName: "div",
+    elementName: "button",
     className: "btn",
     id: "defense-button",
     innerHTML: "DEFENSE",
@@ -123,13 +123,13 @@ function createPokemon(data, id, className, image) {
     innerHTML: renderStats(data),
   });
 
-  const playerPokemonImage = image;
+  const playerPokemonImageSrc = image;
   const playerPokemon = createElement({
     className: className,
     id: id,
     innerHTML: `
     ${playerStats.outerHTML}
-    <div id="image" >${playerPokemonImage.outerHTML}</div>
+    <div id="image" ><img src="${playerPokemonImageSrc}" /></div>
     <div id="defense" ></div>
     `,
   });
@@ -139,15 +139,11 @@ export function renderStats(data) {
   return `
     <div id="stats">
     ${
-      createBar(
-        (data.currentHealth / data.maxHealth) * 100,
-        "5px",
-        100,
-        "salmon"
-      ).outerHTML
+      createBar((data.currentHealth / data.maxHealth) * 100, 5, 100, "salmon")
+        .outerHTML
     }
      ${
-       createBar((data.currentMona / data.maxMona) * 100, "5px", 100, "skyblue")
+       createBar((data.currentMona / data.maxMona) * 100, 5, 100, "skyblue")
          .outerHTML
      }
     </div>

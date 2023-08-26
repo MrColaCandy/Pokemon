@@ -30,30 +30,30 @@ body {
   margin: 0;
   padding: 0;
 }
-.col {
+.col-start {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
-.row {
+.col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.col > * {
+  margin: calc(var(--space-small) / 3) 0;
+}
+.between {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.row * {
-  margin: 0 5px;
-}
-
 .center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.self-center {
-  text-align: center;
-  margin: var(--space-small) auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

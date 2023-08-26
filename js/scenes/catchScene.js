@@ -21,7 +21,8 @@ export const openCatchScene = () => {
     You found <span>${pokemon.name}</span> try to catch it!
     `,
   });
-  const pokemonImage = pokemon.frontImage;
+  const pokemonImage = createElement({ elementName: "img" });
+  pokemonImage.src = pokemon.frontImage;
   const btnDiv = createElement({ className: "catch-scene-btns row" });
   const catchBtn = createElement({
     elementName: "button",
