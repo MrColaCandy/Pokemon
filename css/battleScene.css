@@ -37,13 +37,13 @@
 .my-turn {
   position: absolute;
   top: 45px;
-  left: 10px;
+  left: 20px;
 }
 
 .enemy-turn {
   position: absolute;
   top: 45px;
-  left: 750px;
+  left: calc(var(--canvas-width) - 280px);
 }
 .attack-animation {
   position: absolute;

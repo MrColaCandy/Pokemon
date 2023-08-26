@@ -2,7 +2,7 @@ export const createBar = (width, height, backWidth, color = "seagreen") => {
   const container = document.createElement("div");
   const bar = document.createElement("div");
   const back = document.createElement("div");
-  back.style.height = height;
+  back.style.height = `${height}px`;
   back.style.width = `${backWidth}px`;
 
   back.style.position = "absolute";
@@ -10,7 +10,7 @@ export const createBar = (width, height, backWidth, color = "seagreen") => {
   back.style.backgroundColor = "gray";
   bar.style.width = `${width}px`;
   bar.style.backgroundColor = color;
-  bar.style.height = height;
+  bar.style.height = `${height}px`;
   bar.style.borderRadius = "10px";
   back.style.borderRadius = "10px";
   bar.style.position = "relative";

@@ -1,13 +1,18 @@
+:root {
+  --modal-width: calc(var(--canvas-width) - 800px);
+  --modal-height: calc(var(--canvas-height) - 200px);
+  --modal-inner-width: 270px;
+  --modal-inner-height: 300px;
+}
+
 .modal {
   position: absolute;
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 700px;
-  height: 500px;
+  text-align: left;
+  width: var(--modal-width);
+  height: var(--modal-height);
   left: 50%;
   top: 55%;
+  color: var(--color-text);
   transform: translate(-50%, -50%);
   background-image: url("../assets/images/ModalBackground.png");
   background-size: contain;
@@ -15,93 +20,45 @@
   border-radius: calc(var(--space-small) / 4);
   padding: var(--space-small);
 }
-.modal .stats {
-  position: absolute;
-  top: 200px;
-  left: 50px;
-  width: 255px;
-  color: var(--color-text);
-}
-.modal .current-stats {
-  position: absolute;
-  top: 70px;
-  left: 80px;
-}
-.modal .modal-body .avatar img {
-  width: 130px;
-  height: 130px;
-  position: absolute;
-  left: -135px;
-  top: 70px;
-}
-.modal .modal-body .avatar {
-  position: absolute;
-  top: 15px;
-  left: 250px;
-  font-weight: bold;
-  color: var(--color-text);
-}
-
-.modal .modal-body .powers,
-.modal .modal-body .current {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: small;
-}
-.modal .modal-body .current {
-  width: 350px;
-}
-.modal .modal-header {
-  text-align: left;
-  width: 100%;
-  position: absolute;
-  top: 15px;
-  left: 50px;
-  color: var(--color-text);
-  font-weight: bolder;
-}
-.modal .modal-footer {
-  width: 35%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  bottom: 170px;
-  left: 55px;
-}
-.modal .resources {
-  position: absolute;
-  top: 30px;
-  left: 420px;
-  width: 240px;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--color-text);
-}
-.modal .resources h3 {
+.modal h3,
+.modal p {
   margin-bottom: var(--space-medium);
 }
-.hp img,
-.mona img {
+.modal .right-page {
+  width: var(--modal-inner-width);
+  height: var(--modal-inner-height);
+  position: absolute;
+  top: 45px;
+  left: calc(var(--modal-width) - var(--modal-inner-width) - 35px);
+}
+.modal .inventory img {
   width: var(--space-medium);
   height: var(--space-medium);
 }
 
-.xp,
-.hp,
-.mona {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.modal .inventory {
+  margin-bottom: var(--space-large);
 }
-.modal-description {
-  width: 250px;
-  color: var(--color-text);
+.modal .left-page {
+  width: var(--modal-inner-width);
+  height: var(--modal-inner-height);
   position: absolute;
-  right: 55px;
-  bottom: 250px;
+  top: 45px;
+  left: 35px;
 }
-.modal-description h3 {
-  margin-bottom: var(--space-medium);
+
+.modal .buttons-div {
+  margin-top: var(--space-large);
+}
+
+.modal .level-info {
+  position: absolute;
+  left: 10px;
+  top: 50px;
+}
+
+.modal .pokemon-image img {
+  transform: translateX(70px);
+  width: 110px;
+  height: 110px;
 }

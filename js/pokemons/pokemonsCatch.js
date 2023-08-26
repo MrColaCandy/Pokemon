@@ -13,11 +13,11 @@ import { pokemonsDiv, renderPokemons } from "../UI/pokemonsList.js";
 export const findPokemon = async () => {
   if (gameState.battle || gameState.catch) return;
 
-  const chance = 0.08;
+  const chance = 0.0008;
   if (playerInput.x == 0 && playerInput.y == 0) return;
   if (Math.random() <= chance) {
     gameState.catch = true;
-    const randomId = Math.round(Math.random() * 100000) % 200;
+    const randomId = Math.round(Math.random() * 100000) % 500;
     showAnimation(
       "../../assets/animations/spinner.json",
       "spinner-lottie",

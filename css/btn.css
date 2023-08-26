@@ -14,7 +14,9 @@
 .close-btn {
   width: var(--space-medium);
   height: var(--space-medium);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: calc(var(--space-small) / 4);
   position: absolute;
   right: var(--space-small);

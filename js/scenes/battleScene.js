@@ -85,8 +85,8 @@ export const openBattleScene = async () => {
     id: "battle-timer",
     className: "battle-timer my-turn",
   });
-  startTurnTimer();
   createScene(playerPokemon, enemyPokemon, buttonsGroup, timerDiv);
+  startTurnTimer();
   removeElement("battle-spinner");
 };
 

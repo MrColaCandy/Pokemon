@@ -1,21 +1,20 @@
 .catch-scene img {
-  width: var(--space-xxxlarge);
-  height: var(--space-xxxlarge);
+  width: calc(var(--canvas-width) / 5);
+  height: calc(var(--canvas-width) / 5);
   position: absolute;
-  width: var(--space-xxxlarge);
-  height: var(--space-xxxlarge);
+  width: calc(var(--canvas-width) / 5);
+  height: calc(var(--canvas-width) / 5);
   bottom: var(--space-medium);
   right: var(--space-xxlarge);
 }
 .pokemon-name {
   box-sizing: border-box;
-  width: 500px;
+  width: calc(var(--canvas-width) / 4);
   padding: var(--space-medium);
-  color: rgb(107, 71, 24);
-  font-size: 1.3rem;
+  color: var(--color-text);
   text-align: center;
   position: absolute;
-  top: 10px;
+  top: var(--space-small);
   background-color: var(--color-background-wood);
 }
 

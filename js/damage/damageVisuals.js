@@ -20,6 +20,6 @@ export const createAttackAnimation = (attackType, id) => {
   });
   setTimeout(() => {
     removeElement(id);
-  }, 800);
+  }, 1000);
   return animationDiv;
 };

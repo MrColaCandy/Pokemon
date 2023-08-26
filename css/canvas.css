@@ -1,4 +1,8 @@
+:root {
+  --canvas-width: 1500px;
+  --canvas-height: 700px;
+}
 canvas {
-  width: 1500px;
-  height: 700px;
+  width: var(--canvas-width);
+  height: var(--canvas-height);
 }
