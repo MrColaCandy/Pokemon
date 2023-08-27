@@ -3,8 +3,10 @@ import {
   getElement,
   removeElement,
 } from "../Utils/elementUtil.js";
+import { playSoundEffect } from "../audio/audioManager.js";
 
 export const createBattleResult = (isWon) => {
+  isWon ? playSoundEffect("yeah.mp3") : playSoundEffect("no.mp3");
   const title = createElement({
     elementName: "h3",
     className: "title center",
@@ -43,6 +45,7 @@ export const createBattleResult = (isWon) => {
       <div >${footer.outerHTML}</div>
     `,
   });
+
   getElement("base").append(battleResult);
 };
 

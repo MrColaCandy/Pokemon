@@ -9,11 +9,12 @@ import { getCatchingPokemon, setCatchingPokemon } from "./currentPokemon.js";
 import { showAnimation } from "../UI/lottieAnimations.js";
 import { activateNotification } from "../UI/notifications.js";
 import { pokemonsDiv, renderPokemons } from "../UI/pokemonsList.js";
+import { playSoundEffect } from "../audio/audioManager.js";
 
 export const findPokemon = async () => {
   if (gameState.battle || gameState.catch) return;
 
-  const chance = 0.0008;
+  const chance = 0.0004;
   if (playerInput.x == 0 && playerInput.y == 0) return;
   if (Math.random() <= chance) {
     gameState.catch = true;
@@ -47,6 +48,7 @@ export const catchPokemon = () => {
     setTimeout(() => {
       showAnimation("../assets/animations/failed.json", "fail");
       activateNotification(`${pokemon.name} escaped!!!`);
+      playSoundEffect("omg.mp3");
     }, 500);
     return;
   }
@@ -74,6 +76,7 @@ export const catchPokemon = () => {
     setTimeout(() => {
       showAnimation("../assets/animations/pokeball.json");
       activateNotification("New pokemon added!");
+      playSoundEffect("wow.mp3");
     }, 500);
   } else {
     activateNotification("Catching failed!");

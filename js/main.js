@@ -8,9 +8,10 @@ import { setAvatar } from "./player/playerAvatar.js";
 import { checkConnection } from "./game-state/connection.js";
 import { handleBattleEvents } from "./scenes/battleScene.js";
 import { AI } from "./game-loops/AILoop.js";
+import { playAudio } from "./audio/audioManager.js";
 
 await setDefaultPokemon();
-
+playAudio("ambient");
 load();
 checkConnection();
 

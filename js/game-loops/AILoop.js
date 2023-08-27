@@ -7,6 +7,7 @@ export const AI = () => {
   requestAnimationFrame(AI);
   if (!gameState.battle) {
     delay = -1;
+
     return;
   }
   if (isMyTurn) {
@@ -14,8 +15,8 @@ export const AI = () => {
   }
 
   delay++;
-  if (delay >= 500) {
-    delay = -1;
+  if (delay >= 400) {
     getEnemyMove();
+    delay = -1;
   }
 };

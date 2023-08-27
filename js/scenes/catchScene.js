@@ -1,10 +1,11 @@
 import { createElement } from "../Utils/elementUtil.js";
+import { playAudio } from "../audio/audioManager.js";
 import { gameState } from "../game-state/gameState.js";
 import { getCatchingPokemon } from "../pokemons/currentPokemon.js";
 
 export const openCatchScene = () => {
   const pokemon = getCatchingPokemon();
-
+  playAudio("catch");
   const catchScene = createElement({
     className: "catch-scene scene",
     id: "catch-scene",
@@ -48,6 +49,7 @@ export const openCatchScene = () => {
 };
 
 export const closeCatchScene = () => {
+  playAudio("ambient");
   document.querySelector("#catch-scene").remove();
   gameState.catch = false;
 };

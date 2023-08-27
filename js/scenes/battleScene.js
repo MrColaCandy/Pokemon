@@ -19,6 +19,8 @@ import { attack, defend } from "../battle/battle.js";
 import { closeBattleResult } from "../battle/battleResult.js";
 import { backgrounds } from "../game-loops/animationLoop.js";
 import { activateNotification } from "../UI/notifications.js";
+import { playAudio } from "../audio/audioManager.js";
+import { playerData } from "../player/playerData.js";
 
 export const openBattleScene = async () => {
   if (gameState.battle || gameState.catch) return;
@@ -36,19 +38,28 @@ export const openBattleScene = async () => {
 
   const randomId = Math.round(Math.random() * 100000) % 500;
   const enemyPokemonData = await getPokemon(randomId === 0 ? 1 : randomId);
-  setEnemyPokemon(enemyPokemonData);
+  const exist = playerData.playerPokemons.find(
+    (p) => p.id == enemyPokemonData.id
+  );
 
+  if (exist) {
+    gameState.battle = false;
+    removeElement("battle-spinner");
+    return;
+  }
+  setEnemyPokemon(enemyPokemonData);
+  playAudio("battle");
   const playerPokemon = createPokemon(
     playerPokemonData,
     "player-pokemon",
-    "player-pokemon col-center",
+    "player-pokemon col-start",
     playerPokemonData.backImage
   );
 
   const enemyPokemon = createPokemon(
     enemyPokemonData,
     "enemy-pokemon",
-    "enemy-pokemon col-center",
+    "enemy-pokemon col-start",
     enemyPokemonData.frontImage
   );
 
@@ -91,6 +102,7 @@ export const openBattleScene = async () => {
 };
 
 export const closeBattleScene = () => {
+  playAudio("ambient");
   removeElement("battle-scene");
   gameState.battle = false;
   backgrounds.forEach((b) => {

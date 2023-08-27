@@ -23,11 +23,6 @@ export const calculateDamage = async (
   }
   damage *= chance;
 
-  const player = getCurrentPokemon();
-  if (damage >= player.maxHealth) {
-    damage = player.maxHealth * 0.75;
-  }
-
   const defenderType = defender.type.type.name;
   const attackerTypeUrl = defender.type.type.url;
   let multiplier = 1;
@@ -61,6 +56,9 @@ export const calculateDamage = async (
   }
   document.getElementById("damage-spinner").remove();
   damage *= multiplier;
-  console.log(damage);
+
+  if (damage >= defender.maxHealth) {
+    damage = defender.maxHealth * 0.6;
+  }
   return damage;
 };

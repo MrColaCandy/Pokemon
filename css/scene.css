@@ -11,8 +11,8 @@
 }
 
 #battle-scene {
-  background-image: url("../assets/images/battleBackground.png");
+  background-image: url("../assets/images/battleBackground.webp");
 }
 #catch-scene {
-  background-image: url("../assets/images/CatchBackground.png");
+  background-image: url("../assets/images/CatchBackground.webp");
 }

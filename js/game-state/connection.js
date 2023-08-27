@@ -1,9 +1,10 @@
 import { hideLoading, showLoading } from "../UI/loadingPanel.js";
+import { closeBattleScene } from "../scenes/battleScene.js";
+import { gameState } from "./gameState.js";
 
-export let isOnline = false;
+export let isOnline = true;
 
 export const checkConnection = () => {
-  isOnline = window.navigator.onLine;
   setInterval(() => {
     isOnline = window.navigator.onLine;
     if (!isOnline) {
@@ -11,5 +12,11 @@ export const checkConnection = () => {
     } else {
       hideLoading();
     }
-  }, 1000);
+  }, 0);
+
+  addEventListener("offline", () => {
+    if (gameState.battle) {
+      closeBattleScene();
+    }
+  });
 };

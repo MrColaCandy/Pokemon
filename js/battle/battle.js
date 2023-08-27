@@ -105,9 +105,8 @@ export const attack = async ({
     removeElement("special-defense");
     defender.defenseType = "normal";
   }
-  setTimeout(() => {
-    nextTurn();
-  }, 2000);
+
+  nextTurn();
 };
 
 export const defend = (defender) => {
@@ -130,7 +129,6 @@ export const defend = (defender) => {
     defender.currentMona += 25;
     defenderDiv.querySelector("#stats").innerHTML = renderStats(defender);
   }
-  setTimeout(() => {
-    nextTurn();
-  }, 2000);
+
+  nextTurn();
 };

@@ -7,11 +7,14 @@ export let start = 250;
 let delay = 0;
 const max = start;
 export const nextTurn = () => {
+  const timer = getElement("battle-timer");
   if (!gameState.battle) {
     isMyTurn = true;
+    timer.classList.add("my-turn");
+    timer.classList.remove("enemy-turn");
     return;
   }
-  const timer = getElement("battle-timer");
+
   const attackBtn = getElement("attack-button");
   const defenseBtn = getElement("defense-button");
   const specialBtn = getElement("special-attack-button");
@@ -38,12 +41,13 @@ export const nextTurn = () => {
 };
 
 export const startTurnTimer = () => {
+  const timer = getElement("battle-timer");
   if (!gameState.battle) {
     start = max;
     return;
   }
   requestAnimationFrame(startTurnTimer);
-  const timer = getElement("battle-timer");
+
   delay++;
   if (delay % 10 !== 0) return;
   start--;
