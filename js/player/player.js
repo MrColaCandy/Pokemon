@@ -11,9 +11,17 @@ playerImageLeft.src = "../assets/images/playerLeft.png";
 export const playerImageRight = new Image();
 playerImageRight.src = "../assets/images/playerRight.png";
 
+let speed = 3;
 let frame = 0;
 let maxFrames = 1;
 let timer = 0;
+
+export const setSpeed = (value) => {
+  speed = value;
+};
+export const getSpeed = () => {
+  return speed;
+};
 export const playerSprit = new Sprite(
   {
     x: canvas.width / 2 - playerImageDown.width / 4 / 2,

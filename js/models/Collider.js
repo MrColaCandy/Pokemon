@@ -1,10 +1,10 @@
 export class Collider {
-  static size = 48;
+  static size = 352;
   constructor(position) {
     this.position = position;
   }
   draw(context) {
-    context.fillStyle = "rgba(255,0,0,0.05)";
+    context.fillStyle = "rgba(255,0,0,0.1)";
     context.fillRect(
       this.position.x,
       this.position.y,

@@ -1,20 +1,21 @@
 import { context } from "../UI/canvas.js";
 import { collisions } from "../data/collisionsData.js";
 import { Collider } from "../models/Collider.js";
-import { offset } from "./mainMap.js";
+import { offset, rowLength, tileSize } from "./mainMap.js";
 const collisionMap = [];
 export const colliders = [];
-for (let i = 0; i < collisions.length; i += 70) {
-  collisionMap.push(collisions.slice(i, i + 70));
+
+for (let i = 0; i < collisions.length; i += rowLength) {
+  collisionMap.push(collisions.slice(i, i + rowLength));
 }
 
 collisionMap.forEach((row, i) => {
   row.forEach((col, j) => {
-    if (col != 1025) return;
+    if (col != 145) return;
 
     const collider = new Collider({
-      x: j * Collider.size + offset.x,
-      y: i * Collider.size + offset.y,
+      x: j * tileSize + offset.x,
+      y: i * tileSize + offset.y,
     });
     colliders.push(collider);
   });

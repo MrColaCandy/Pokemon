@@ -15,7 +15,7 @@ export const createAttackAnimation = (attackType, id) => {
   const animationDiv = createElement({
     elementName: "div",
     id: id,
-    className: "attack-animation",
+    className: "w-full h-full absolute top-0 left-0 z-100",
     innerHTML: animation.outerHTML,
   });
   setTimeout(() => {

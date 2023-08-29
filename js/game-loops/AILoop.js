@@ -1,10 +1,12 @@
 import { getEnemyMove } from "../battle/enemy.js";
 import { gameState } from "../game-state/gameState.js";
 import { isMyTurn } from "../game-state/playerTurn.js";
-
+import { isOnline } from "../game-state/connection.js";
 let delay = -1;
-export const AI = () => {
-  requestAnimationFrame(AI);
+export const startAILoop = () => {
+  requestAnimationFrame(startAILoop);
+  if (gameState.pause) return;
+  if (!isOnline) return;
   if (!gameState.battle) {
     delay = -1;
 

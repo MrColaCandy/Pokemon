@@ -1,9 +1,0 @@
-.lottie {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(var(--canvas-width) / 5);
-  height: calc(var(--canvas-width) / 5);
-  z-index: 501;
-}

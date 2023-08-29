@@ -1,30 +1,25 @@
-import { isOnline } from "../game-state/connection.js";
-import { gameState } from "../game-state/gameState.js";
-
 export const playerInput = { x: 0, y: 0 };
 
 addEventListener("keydown", (e) => {
-  if (gameState.battle || gameState.catch) return;
-  if (!isOnline) return;
-  if (e.key === "w") {
+  if (e.code === "KeyW") {
     playerInput.y = 1;
     playerInput.x = 0;
 
     return;
   }
 
-  if (e.key === "s") {
+  if (e.code === "KeyS") {
     playerInput.y = -1;
     playerInput.x = 0;
     return;
   }
 
-  if (e.key === "d") {
+  if (e.code === "KeyD") {
     playerInput.x = 1;
     playerInput.y = 0;
     return;
   }
-  if (e.key === "a") {
+  if (e.code === "KeyA") {
     playerInput.x = -1;
     playerInput.y = 0;
     return;
@@ -32,11 +27,11 @@ addEventListener("keydown", (e) => {
 });
 
 addEventListener("keyup", (e) => {
-  if (e.key === "w" || e.key === "s") {
+  if (e.code === "KeyW" || e.code === "KeyS") {
     playerInput.y = 0;
   }
 
-  if (e.key === "a" || e.key === "d") {
+  if (e.code === "KeyA" || e.code === "KeyD") {
     playerInput.x = 0;
   }
 });

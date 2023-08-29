@@ -1,15 +1,18 @@
-const notification = document.getElementById("notification");
-export const activateNotification = (message, timeOut = 2) => {
-  notification.querySelector("span").innerText = message;
-  gsap.to(notification, {
-    opacity: 1,
-    duration: 0.5,
-    onComplete: () => {
-      gsap.to(notification, {
-        delay: timeOut,
-        opacity: 0,
-        duration: 1,
-      });
-    },
-  });
+import { removeElement } from "../Utils/elementUtil.js";
+import { gameRoot } from "./gameRoot.js";
+
+const notification = document.createElement("div");
+notification.id = "notification";
+notification.className = "absolute bottom-0 right-0";
+notification.innerHTML = `
+<img src="../../assets/animations/notification.webp"><img>
+<div class="bg-amber-400 w-96 rounded-full py-2 px-3 text-center text-xl text-white font-bold absolute bottom-52 right-32" id="message"></div>
+`;
+
+export const activateNotification = (message) => {
+  gameRoot.append(notification);
+  notification.querySelector("#message").innerHTML = message;
+  setTimeout(() => {
+    removeElement("notification");
+  }, 1500);
 };

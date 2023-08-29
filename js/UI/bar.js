@@ -18,5 +18,7 @@ export const createBar = (width, height, backWidth, color = "seagreen") => {
   bar.style.zIndex = 1;
   container.append(back);
   container.append(bar);
+  container.style.width = `100px`;
+
   return container;
 };

@@ -5,7 +5,12 @@ export const createElement = ({
   innerHTML,
 }) => {
   const element = document.createElement(elementName);
-  element.className = className;
+  if (className) {
+    element.className = className;
+  }
+  if (id) {
+    element.id = id;
+  }
   element.setAttribute("id", id);
   if (innerHTML) {
     element.innerHTML = innerHTML;

@@ -1,8 +1,11 @@
-const loading = document.querySelector(".loading-panel");
+import { removeElement } from "../Utils/elementUtil.js";
+import { gameRoot } from "./gameRoot.js";
 
 export const showLoading = () => {
-  loading.style.display = "flex";
+  const loading = document.createElement("div");
+  loading.setAttribute("id", "loading-panel");
+  gameRoot.append(loading);
 };
 export const hideLoading = () => {
-  loading.style.display = "none";
+  removeElement("loading-panel");
 };

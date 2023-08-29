@@ -3,38 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Pokemon</title>
   </head>
   <body>
     <main>
-      <div id="base">
-        <div class="loading-panel">
-          <img
-            class="connection-gif"
-            src="./assets//animations/connection.gif"
-            alt="connecting..."
-          />
-        </div>
-        <div class="character-avatar">
-          <div class="avatar-background">
-            <img class="avatar-image" />
-          </div>
-        </div>
-        <div id="notification" class="notification">
-          <span></span>
-          <img src="./assets/animations/notification.gif" alt="" />
-        </div>
-        <img
-          id="pokemon-btn"
-          class="pokemon-btn"
-          src="./assets/images/pokemonBall.png"
-          alt=""
-        />
-        <div id="pokemons" class="pokemons"></div>
+      <section id="game-root">
         <canvas></canvas>
-      </div>
+      </section>
     </main>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

@@ -1,20 +1,21 @@
 import { context } from "../UI/canvas.js";
 import { battleZones } from "../data/battleZonesData.js";
 import { Collider } from "../models/Collider.js";
-import { offset } from "./mainMap.js";
+import { offset, rowLength, tileSize } from "./mainMap.js";
 const battleZoneMap = [];
 export const battleColliders = [];
-for (let i = 0; i < battleZones.length; i += 70) {
-  battleZoneMap.push(battleZones.slice(i, i + 70));
+
+for (let i = 0; i < battleZones.length; i += rowLength) {
+  battleZoneMap.push(battleZones.slice(i, i + rowLength));
 }
 
 battleZoneMap.forEach((row, i) => {
   row.forEach((col, j) => {
-    if (col != 1025) return;
+    if (col != 145) return;
 
     const collider = new Collider({
-      x: j * Collider.size + offset.x,
-      y: i * Collider.size + offset.y,
+      x: j * tileSize + offset.x,
+      y: i * tileSize + offset.y,
     });
     battleColliders.push(collider);
   });

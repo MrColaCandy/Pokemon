@@ -1,0 +1,61 @@
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#catch-scene {
+  background-image: url("../assets/images/CatchBackground.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.catch-scene-character {
+  background-image: url("../assets/images/ThrowSpriteSheet.png");
+  width: 310px;
+  height: 500px;
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+}
+.catch-scene-character-active {
+  animation: throw 0.7s steps(3) infinite;
+}
+@keyframes throw {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1024px 0;
+  }
+  0% {
+    background-position: 0 0;
+  }
+}
+
+#enemy-pokemon img {
+  width: 250px;
+  height: 250px;
+}
+#player-pokemon img {
+  width: 300px;
+  height: 300px;
+}
+
+#battle-scene {
+  background-image: url("../assets/images/battleBackground.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.my-turn {
+  position: absolute;
+  left: 500px;
+  bottom: 50px;
+}
+.enemy-turn {
+  position: absolute;
+  left: 1170px;
+  bottom: 50px;
+}

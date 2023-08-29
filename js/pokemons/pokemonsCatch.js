@@ -1,20 +1,18 @@
 import { playerInput } from "../player/playerInput.js";
 import { getPokemon } from "./pokemonsApi.js";
-import { openModal } from "../UI/modal.js";
-import { setCurrentPokemon } from "./currentPokemon.js";
 import { playerData } from "../player/playerData.js";
 import { gameState } from "../game-state/gameState.js";
 import { closeCatchScene, openCatchScene } from "../scenes/catchScene.js";
 import { getCatchingPokemon, setCatchingPokemon } from "./currentPokemon.js";
 import { showAnimation } from "../UI/lottieAnimations.js";
 import { activateNotification } from "../UI/notifications.js";
-import { pokemonsDiv, renderPokemons } from "../UI/pokemonsList.js";
+import { list, renderPokemonsList } from "../UI/list.js";
 import { playSoundEffect } from "../audio/audioManager.js";
 
 export const findPokemon = async () => {
-  if (gameState.battle || gameState.catch) return;
+  if (gameState.battle || gameState.catch || gameState.pause) return;
 
-  const chance = 0.0004;
+  const chance = 0.0005;
   if (playerInput.x == 0 && playerInput.y == 0) return;
   if (Math.random() <= chance) {
     gameState.catch = true;
@@ -47,7 +45,6 @@ export const catchPokemon = () => {
     closeCatchScene();
     setTimeout(() => {
       showAnimation("../assets/animations/failed.json", "fail");
-      activateNotification(`${pokemon.name} escaped!!!`);
       playSoundEffect("omg.mp3");
     }, 500);
     return;
@@ -60,18 +57,18 @@ export const catchPokemon = () => {
   catchBtn.innerText = "CATCH! " + tries;
   catchBtn.disabled = true;
   const character = document.querySelector('[data-catch="character"]');
-  character.classList.add("throw-ball-active");
+  character.classList.add("catch-scene-character-active");
   setTimeout(() => {
     catchBtn.disabled = false;
-    character.classList.remove("throw-ball-active");
+    character.classList.remove("catch-scene-character-active");
   }, 800);
   const maxSpeed = 255;
   const chance = 5 / ((pokemon.speed / maxSpeed) * 100);
   if (Math.random() <= chance) {
     tries = 10;
     addPokemonToList();
-    renderPokemons();
-    pokemonsDiv.scrollLeft = pokemonsDiv.scrollWidth;
+    renderPokemonsList();
+    list.scrollLeft = list.scrollWidth;
     closeCatchScene();
     setTimeout(() => {
       showAnimation("../assets/animations/pokeball.json");

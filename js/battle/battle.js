@@ -48,17 +48,17 @@ export const attack = async ({
       closeBattleScene();
       if (defender.id === getCurrentPokemon().id) {
         activateNotification("Your pokemon fainted!");
-        playerData.items.health += 4;
-        playerData.items.mona += 4;
-        getCurrentPokemon().xp += 100;
+        playerData.items.health += 2;
+        playerData.items.mona += 2;
+        getCurrentPokemon().xp += 50;
 
         createBattleResult(false);
       } else {
         activateNotification("You Won!");
         createBattleResult(true);
-        playerData.items.health += 10;
-        playerData.items.mona += 10;
-        getCurrentPokemon().xp += 250;
+        playerData.items.health += 5;
+        playerData.items.mona += 5;
+        getCurrentPokemon().xp += 150;
       }
     }, 1000);
   } else {
@@ -121,7 +121,7 @@ export const defend = (defender) => {
 
   const image = new Image();
   image.src = "../../assets/images/specialDefense.png";
-  image.className = "special-defense";
+  image.className = "absolute top-10 left-10";
   image.id = "special-defense";
   console.log(defenderDiv);
   defenderDiv.querySelector("#defense").innerHTML = image.outerHTML;
