@@ -1,4 +1,4 @@
-import { createElement } from "../Utils/elementUtil.js";
+import { createElement } from "../../Utils/elementUtil.js";
 import { gameRoot } from "./gameRoot.js";
 
 export const showAnimation = (src, id, autoClose = true) => {
@@ -18,7 +18,7 @@ export const showAnimation = (src, id, autoClose = true) => {
     elementName: "div",
     id: id,
     className:
-      "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ",
+      "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 ",
   });
   div.innerHTML = animation;
   gameRoot.append(div);

@@ -1,14 +1,13 @@
-import { playerData } from "../player/playerData.js";
-import { pokemonBtn } from "./list.js";
-import { levelUp } from "../pokemons/pokemonLevelUp.js";
-import { heal } from "../pokemons/pokemonHealing.js";
-import { charge } from "../pokemons/pokemonCharging.js";
-import { getCurrentPokemon } from "../pokemons/currentPokemon.js";
-import { createElement, removeElement } from "../Utils/elementUtil.js";
-import { getStatBar } from "../pokemons/PokemonStats.js";
+import { playerData } from "../../player/playerData.js";
+import { levelUp } from "../../pokemons/pokemonLevelUp.js";
+import { heal } from "../../pokemons/pokemonHealing.js";
+import { charge } from "../../pokemons/pokemonCharging.js";
+import { getCurrentPokemon } from "../../pokemons/currentPokemon.js";
+import { createElement, removeElement } from "../../Utils/elementUtil.js";
+import { getStatBar } from "../../pokemons/PokemonStats.js";
 import { createBar } from "./bar.js";
 import { gameRoot } from "./gameRoot.js";
-import { gameState } from "../game-state/gameState.js";
+import { gameState } from "../../game-state/gameState.js";
 
 export const openModal = () => {
   gameState.pause = true;

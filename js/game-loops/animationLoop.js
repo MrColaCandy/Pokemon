@@ -6,7 +6,7 @@ import { drawPlayer, getSpeed } from "../player/player.js";
 import { playerInput } from "../player/playerInput.js";
 import { isOnline } from "../game-state/connection.js";
 import { gameState } from "../game-state/gameState.js";
-import { context } from "../UI/canvas.js";
+import { context } from "../UI/game-ui/canvas.js";
 export const backgrounds = [
   ...colliders,
   ...battleColliders,

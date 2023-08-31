@@ -1,11 +1,11 @@
-import { gameRoot } from "../UI/gameRoot.js";
+import { gameRoot } from "../UI/game-ui/gameRoot.js";
 import { createElement, removeElement } from "../Utils/elementUtil.js";
-import { playSoundEffect } from "../audio/audioManager.js";
+import { playAudio } from "../audio/audioManager.js";
 import { gameState } from "../game-state/gameState.js";
 
 export const createBattleResult = (isWon) => {
   gameState.pause = true;
-  isWon ? playSoundEffect("yeah.mp3") : playSoundEffect("no.mp3");
+  isWon ? playAudio("yeah", false) : playAudio("no", false);
   const title = createElement({
     elementName: "h3",
     className: "font-bold text-xl text-center mb-5",
@@ -38,7 +38,7 @@ export const createBattleResult = (isWon) => {
   const battleResult = createElement({
     elementName: "div",
     className:
-      "w-96 h-84 flex flex-col justify-center items-center bg-amber-400 border-3 p-5 m-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2",
+      "w-96 h-84 rounded-md border-4  flex flex-col justify-center items-center bg-amber-400  p-5 m-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2",
     id: "battle-result",
     innerHTML: `
       ${title.outerHTML}

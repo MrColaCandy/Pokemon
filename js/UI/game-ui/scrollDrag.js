@@ -5,7 +5,7 @@ export const scroll = (element) => {
   let scrollTop;
   slider.addEventListener("mousedown", (e) => {
     isDown = true;
-    startY = e.pageY - slider.offsetLeft;
+    startY = e.pageY - slider.offsetTop;
     scrollTop = slider.scrollTop;
   });
   slider.addEventListener("mouseleave", () => {
@@ -17,7 +17,7 @@ export const scroll = (element) => {
   slider.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
-    const y = e.pageY - slider.offsetLeft;
+    const y = e.pageY - slider.offsetTop;
     const walk = (y - startY) * 3;
     slider.scrollTop = scrollTop - walk;
   });

@@ -5,17 +5,16 @@ import {
   getEnemyPokemon,
 } from "../pokemons/currentPokemon.js";
 import { getPokemon } from "../pokemons/pokemonsApi.js";
-import { showAnimation } from "../UI/lottieAnimations.js";
+import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
 import { createElement, removeElement } from "../Utils/elementUtil.js";
-import { createBar } from "../UI/bar.js";
+import { createBar } from "../UI/game-ui/bar.js";
 import { isMyTurn, startTurnTimer } from "../game-state/playerTurn.js";
 import { attack, defend } from "../battle/battle.js";
 import { closeBattleResult } from "../battle/battleResult.js";
-import { backgrounds } from "../game-loops/animationLoop.js";
-import { activateNotification } from "../UI/notifications.js";
+import { activateNotification } from "../UI/game-ui/notifications.js";
 import { playAudio } from "../audio/audioManager.js";
 import { playerData } from "../player/playerData.js";
-import { gameRoot } from "../UI/gameRoot.js";
+import { gameRoot } from "../UI/game-ui/gameRoot.js";
 
 export const openBattleScene = async () => {
   if (gameState.battle || gameState.catch || gameState.pause) return;
@@ -102,9 +101,6 @@ export const closeBattleScene = () => {
   playAudio("ambient");
   removeElement("battle-scene");
   gameState.battle = false;
-  backgrounds.forEach((b) => {
-    b.position.y -= 48 * 2;
-  });
 };
 
 function createScene(playerPokemon, enemyPokemon, buttonsGroup, timerDiv) {

@@ -1,4 +1,4 @@
-import { context } from "../UI/canvas.js";
+import { context } from "../UI/game-ui/canvas.js";
 import { battleZones } from "../data/battleZonesData.js";
 import { Collider } from "../models/Collider.js";
 import { offset, rowLength, tileSize } from "./mainMap.js";

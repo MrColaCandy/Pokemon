@@ -1,5 +1,5 @@
 export class Collider {
-  static size = 352;
+  static size = 64;
   constructor(position) {
     this.position = position;
   }

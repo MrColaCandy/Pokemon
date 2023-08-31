@@ -1,4 +1,4 @@
-import { hideLoading, showLoading } from "../UI/loadingPanel.js";
+import { hideLoading, showLoading } from "../UI/game-ui/loadingPanel.js";
 import { closeBattleScene } from "../scenes/battleScene.js";
 import { gameState } from "./gameState.js";
 

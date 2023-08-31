@@ -1,5 +1,5 @@
 import { getElement, removeElement } from "../Utils/elementUtil.js";
-import { activateNotification } from "../UI/notifications.js";
+import { activateNotification } from "../UI/game-ui/notifications.js";
 import { calculateDamage } from "../damage/damageCalculator.js";
 import { createAttackAnimation } from "../damage/damageVisuals.js";
 import { nextTurn } from "../game-state/playerTurn.js";

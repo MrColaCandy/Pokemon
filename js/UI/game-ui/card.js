@@ -1,5 +1,5 @@
-import { createElement } from "../Utils/elementUtil.js";
-import { getCurrentPokemon } from "../pokemons/currentPokemon.js";
+import { createElement } from "../../Utils/elementUtil.js";
+import { getCurrentPokemon } from "../../pokemons/currentPokemon.js";
 
 export const createPokemonCard = (pokemon) => {
   const src = pokemon.frontImage;

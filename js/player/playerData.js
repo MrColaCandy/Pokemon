@@ -1,5 +1,3 @@
-import { createElement } from "../Utils/elementUtil.js";
-import { backgrounds } from "../game-loops/animationLoop.js";
 import { battleColliders } from "../maps/battleZonesMap.js";
 import { colliders } from "../maps/collisionMap.js";
 import { foregroundSprite } from "../maps/foregroundMap.js";

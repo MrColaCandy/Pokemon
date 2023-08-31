@@ -1,4 +1,4 @@
-import { gameRoot } from "../UI/gameRoot.js";
+import { gameRoot } from "../UI/game-ui/gameRoot.js";
 import { createElement } from "../Utils/elementUtil.js";
 import { playAudio } from "../audio/audioManager.js";
 import { gameState } from "../game-state/gameState.js";

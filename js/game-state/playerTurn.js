@@ -1,4 +1,4 @@
-import { createBar } from "../UI/bar.js";
+import { createBar } from "../UI/game-ui/bar.js";
 import { getElement } from "../Utils/elementUtil.js";
 import { gameState } from "./gameState.js";
 export let isMyTurn = true;

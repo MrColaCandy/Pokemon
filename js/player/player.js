@@ -1,4 +1,4 @@
-import { canvas, context } from "../UI/canvas.js";
+import { canvas, context } from "../UI/game-ui/canvas.js";
 import { Sprite } from "../models/Sprite.js";
 import { playerInput } from "./playerInput.js";
 
@@ -17,15 +17,15 @@ let maxFrames = 1;
 let timer = 0;
 
 export const setSpeed = (value) => {
-  speed = value;
+  speed = value / 2;
 };
 export const getSpeed = () => {
-  return speed;
+  return speed / 2;
 };
 export const playerSprit = new Sprite(
   {
-    x: canvas.width / 2 - playerImageDown.width / 4 / 2,
-    y: canvas.height / 2 - playerImageDown.height / 2,
+    x: canvas.width / 8 - playerImageDown.width / 4 / 2,
+    y: canvas.height / 8 - playerImageDown.height / 2,
   },
   playerImageDown
 );

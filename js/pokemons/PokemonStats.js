@@ -1,4 +1,4 @@
-import { createBar } from "../UI/bar.js";
+import { createBar } from "../UI/game-ui/bar.js";
 import { getCurrentPokemon } from "./currentPokemon.js";
 
 export const getStatBar = ({

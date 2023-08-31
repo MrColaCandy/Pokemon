@@ -1,5 +1,4 @@
-import { showAnimation } from "../UI/lottieAnimations.js";
-import { getCurrentPokemon } from "../pokemons/currentPokemon.js";
+import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
 import { get } from "../pokemons/pokemonsApi.js";
 
 export const calculateDamage = async (

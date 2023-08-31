@@ -1,5 +1,5 @@
 import { Sprite } from "../models/Sprite.js";
-import { context } from "../UI/canvas.js";
+import { context } from "../UI/game-ui/canvas.js";
 export const foreground = new Image();
 foreground.src = "../assets/images/foreground.png";
 import { offset } from "./mainMap.js";

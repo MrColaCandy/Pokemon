@@ -1,4 +1,4 @@
-import { activateNotification } from "../UI/notifications.js";
+import { activateNotification } from "../UI/game-ui/notifications.js";
 import { Pokemon } from "../models/Pokemon.js";
 
 const url = new URL("https://pokeapi.co/api/v2/pokemon");

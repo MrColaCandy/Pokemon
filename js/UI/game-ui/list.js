@@ -1,12 +1,11 @@
-import { playerData } from "../player/playerData.js";
+import { playerData } from "../../player/playerData.js";
 import { createPokemonCard } from "./card.js";
 import { scroll } from "./scrollDrag.js";
 import { canvas } from "./canvas.js";
-import { setCurrentPokemon } from "../pokemons/currentPokemon.js";
+import { setCurrentPokemon } from "../../pokemons/currentPokemon.js";
 import { closeModal, openModal } from "./modal.js";
-import { createElement, removeElement } from "../Utils/elementUtil.js";
+import { createElement, removeElement } from "../../Utils/elementUtil.js";
 import { gameRoot } from "./gameRoot.js";
-import { gameState } from "../game-state/gameState.js";
 
 export const list = createElement({
   elementName: "div",
@@ -17,14 +16,13 @@ export const list = createElement({
 export const pokemonBtn = createElement({
   elementName: "button",
   id: "pokemon-btn",
-  className: "w-32 absolute top-0 left-0",
+  className: "w-32 absolute top-2 left-2",
   innerHTML: ` <img src="../../assets/images/pokemonBall.png" />`,
 });
 
 gameRoot.append(pokemonBtn);
 
 export const renderPokemonsList = async () => {
-  gameState.pause = true;
   list.innerHTML = "";
 
   playerData.playerPokemons.forEach((p) => {
@@ -36,7 +34,6 @@ export const renderPokemonsList = async () => {
   gameRoot.append(list);
 };
 export function closePokemonList() {
-  gameState.pause = false;
   removeElement("list");
 }
 

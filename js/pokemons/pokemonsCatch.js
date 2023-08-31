@@ -4,15 +4,15 @@ import { playerData } from "../player/playerData.js";
 import { gameState } from "../game-state/gameState.js";
 import { closeCatchScene, openCatchScene } from "../scenes/catchScene.js";
 import { getCatchingPokemon, setCatchingPokemon } from "./currentPokemon.js";
-import { showAnimation } from "../UI/lottieAnimations.js";
-import { activateNotification } from "../UI/notifications.js";
-import { list, renderPokemonsList } from "../UI/list.js";
-import { playSoundEffect } from "../audio/audioManager.js";
+import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
+import { activateNotification } from "../UI/game-ui/notifications.js";
+import { list, renderPokemonsList } from "../UI/game-ui/list.js";
+import { playAudio } from "../audio/audioManager.js";
 
 export const findPokemon = async () => {
   if (gameState.battle || gameState.catch || gameState.pause) return;
 
-  const chance = 0.0005;
+  const chance = 0.0008;
   if (playerInput.x == 0 && playerInput.y == 0) return;
   if (Math.random() <= chance) {
     gameState.catch = true;
@@ -45,7 +45,7 @@ export const catchPokemon = () => {
     closeCatchScene();
     setTimeout(() => {
       showAnimation("../assets/animations/failed.json", "fail");
-      playSoundEffect("omg.mp3");
+      playAudio("omg", false);
     }, 500);
     return;
   }
@@ -68,12 +68,12 @@ export const catchPokemon = () => {
     tries = 10;
     addPokemonToList();
     renderPokemonsList();
-    list.scrollLeft = list.scrollWidth;
+    list.scrollTop = list.scrollHeight;
     closeCatchScene();
     setTimeout(() => {
       showAnimation("../assets/animations/pokeball.json");
       activateNotification("New pokemon added!");
-      playSoundEffect("wow.mp3");
+      playAudio("wow", false);
     }, 500);
   } else {
     activateNotification("Catching failed!");

@@ -1,5 +1,5 @@
-import { activateNotification } from "../UI/notifications.js";
-import { showAnimation } from "../UI/lottieAnimations.js";
+import { activateNotification } from "../UI/game-ui/notifications.js";
+import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
 import { getCurrentPokemon } from "./currentPokemon.js";
 export const levelUp = () => {
   const pokemon = getCurrentPokemon();

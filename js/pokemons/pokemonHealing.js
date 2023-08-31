@@ -1,4 +1,4 @@
-import { activateNotification } from "../UI/notifications.js";
+import { activateNotification } from "../UI/game-ui/notifications.js";
 import { playerData } from "../player/playerData.js";
 import { getCurrentPokemon } from "./currentPokemon.js";
 

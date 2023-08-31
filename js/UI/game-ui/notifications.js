@@ -1,4 +1,4 @@
-import { removeElement } from "../Utils/elementUtil.js";
+import { removeElement } from "../../Utils/elementUtil.js";
 import { gameRoot } from "./gameRoot.js";
 
 const notification = document.createElement("div");

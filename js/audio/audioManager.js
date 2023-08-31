@@ -11,21 +11,39 @@ const audios = [
     name: "battle",
     audio: new Audio("../../assets/audio/battle.wav"),
   },
+  {
+    name: "wow",
+    audio: new Audio("../../assets/audio/wow.mp3"),
+  },
+  {
+    name: "omg",
+    audio: new Audio("../../assets/audio/omg.mp3"),
+  },
+  {
+    name: "no",
+    audio: new Audio("../../assets/audio/no.mp3"),
+  },
+  {
+    name: "yeah",
+    audio: new Audio("../../assets/audio/yeah.mp3"),
+  },
 ];
 
-audios[0].audio.volume = 0.1;
-audios[1].audio.volume = 0.5;
-audios[2].audio.volume = 0.8;
-export const playAudio = (name) => {
-  // audios.forEach((a) => a.audio.pause());
-  // const { audio } = audios.find((a) => a.name == name);
-  // audio.loop = true;
-  // audio.play();
+export const playAudio = (name, only = true) => {
+  if (only) {
+    audios.forEach((a) => a.audio.pause());
+    audio.loop = true;
+  } else {
+    loop = false;
+  }
+  const { audio } = audios.find((a) => a.name == name);
+
+  audio.play();
 };
 
-export const playSoundEffect = (name) => {
-  // const sound = new Audio(`../../assets/audio/${name}`);
-  // sound.loop = false;
-  // sound.volume = 0.2;
-  // sound.play();
+export const setVolume = (value) => {
+  audios.forEach((a) => {
+    a.audio.volume = value;
+  });
 };
+setVolume(0.5);

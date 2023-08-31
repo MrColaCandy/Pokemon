@@ -59,3 +59,15 @@
   left: 1170px;
   bottom: 50px;
 }
+.start-menu {
+  background-image: url("../assets/images/Pokémon-wallpaper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 40;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
