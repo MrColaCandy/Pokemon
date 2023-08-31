@@ -8,27 +8,38 @@ import { setAvatar } from "./player/playerAvatar.js";
 import { checkConnection } from "./game-state/connection.js";
 import { handleBattleEvents } from "./scenes/battleScene.js";
 import { startAILoop } from "./game-loops/AILoop.js";
-import { playAudio } from "./audio/audioManager.js";
 import { createStartMenu } from "./UI/start-menu-ui/startMenu.js";
+import { createHomeButton } from "./UI/game-ui/home.js";
+import { openDanceScene } from "./scenes/danceScene.js";
+import { gameState } from "./game-state/gameState.js";
 
-createStartMenu();
-await setDefaultPokemon();
+openDanceScene();
+// createStartMenu();
+// createHomeButton();
+// await setDefaultPokemon();
 
-load();
-checkConnection();
+// load();
+// checkConnection();
 
-setAvatar("../assets/images/charAvatar.png");
+// setAvatar("../assets/images/charAvatar.png");
 
-// physics loop
-startPhysicsLoop();
-// animations loop
-startAnimationLoop();
-// AI loop
-startAILoop();
-// UI events
-handlePokemonListEvents();
-handleModalEvents();
-handleCatchSceneEvents();
-handleBattleEvents();
+// // physics loop
+// startPhysicsLoop();
+// // animations loop
+// startAnimationLoop();
+// // AI loop
+// startAILoop();
+// // UI events
+// handlePokemonListEvents();
+// handleModalEvents();
+// handleCatchSceneEvents();
+// handleBattleEvents();
 
-save();
+// save();
+addEventListener("blur", () => {
+  gameState.pause = true;
+});
+
+addEventListener("focus", () => {
+  gameState.pause = false;
+});

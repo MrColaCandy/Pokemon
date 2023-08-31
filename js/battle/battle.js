@@ -21,7 +21,7 @@ export const attack = async ({
   if (!gameState.battle) return;
   if (attacker.currentMona <= 0) {
     if (attacker.id === getCurrentPokemon().id) {
-      activateNotification("You lost all your mona!");
+      activateNotification("You lost all your mona! you can only defend!");
     }
     return;
   }
@@ -121,7 +121,8 @@ export const defend = (defender) => {
 
   const image = new Image();
   image.src = "../../assets/images/specialDefense.png";
-  image.className = "absolute top-10 left-10";
+  image.className =
+    "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2";
   image.id = "special-defense";
   console.log(defenderDiv);
   defenderDiv.querySelector("#defense").innerHTML = image.outerHTML;

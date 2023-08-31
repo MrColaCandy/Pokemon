@@ -30,14 +30,13 @@ const audios = [
 ];
 
 export const playAudio = (name, only = true) => {
+  const { audio } = audios.find((a) => a.name == name);
   if (only) {
     audios.forEach((a) => a.audio.pause());
     audio.loop = true;
   } else {
-    loop = false;
+    audio.loop = false;
   }
-  const { audio } = audios.find((a) => a.name == name);
-
   audio.play();
 };
 

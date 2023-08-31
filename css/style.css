@@ -71,3 +71,10 @@
   bottom: 0;
   overflow: hidden;
 }
+
+.dance-scene {
+  background-image: url("../assets/images/danceBackground.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}

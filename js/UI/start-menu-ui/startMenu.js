@@ -1,5 +1,6 @@
 import { createElement, getElement } from "../../Utils/elementUtil.js";
 import { playAudio, setVolume } from "../../audio/audioManager.js";
+import { gameState } from "../../game-state/gameState.js";
 
 export const createStartMenu = () => {
   const startMenu = getElement("start-menu");
@@ -104,6 +105,7 @@ export const createStartMenu = () => {
   addEventListener("click", (e) => {
     if (e.target.id === "start-btn") {
       startMenu.style.display = "none";
+      gameState.pause = false;
       playAudio("ambient");
     }
   });
