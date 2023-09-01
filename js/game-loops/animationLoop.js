@@ -6,8 +6,10 @@ import { drawPlayer, getSpeed } from "../player/player.js";
 import { playerInput } from "../player/playerInput.js";
 import { isOnline } from "../game-state/connection.js";
 import { gameState } from "../game-state/gameState.js";
-import { context } from "../UI/game-ui/canvas.js";
+
+import { danceColliders, drawDanceZones } from "../maps/danceZoneMap.js";
 export const backgrounds = [
+  ...danceColliders,
   ...colliders,
   ...battleColliders,
   foregroundSprite,
@@ -16,12 +18,13 @@ export const backgrounds = [
 export const startAnimationLoop = () => {
   requestAnimationFrame(startAnimationLoop);
 
-  if (gameState.battle || gameState.catch || gameState.pause) return;
+  if (gameState.pause) return;
   if (!isOnline) return;
-  context.beginPath();
+
   drawMap();
   drawColliders();
   drawBattleZones();
+  drawDanceZones();
   drawPlayer();
   drawForeground();
   backgrounds.forEach((b) => {

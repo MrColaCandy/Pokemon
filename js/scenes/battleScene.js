@@ -16,13 +16,18 @@ import { playAudio } from "../audio/audioManager.js";
 import { playerData } from "../player/playerData.js";
 import { gameRoot } from "../UI/game-ui/gameRoot.js";
 
+let canFight = true;
 export const openBattleScene = async () => {
+  if (!canFight) return;
   if (gameState.battle || gameState.catch || gameState.pause) return;
   gameState.battle = true;
+  gameState.pause = true;
+
   const playerPokemonData = getCurrentPokemon();
   if (playerPokemonData.currentHealth < playerPokemonData.maxHealth) {
     activateNotification("Your pokemon is in a bad shape!");
     gameState.battle = false;
+    gameState.pause = false;
     return;
   }
 
@@ -39,10 +44,11 @@ export const openBattleScene = async () => {
   );
   if (exist) {
     gameState.battle = false;
+    gameState.pause = false;
     removeElement("battle-spinner");
     return;
   }
-
+  canFight = false;
   setEnemyPokemon(enemyPokemonData);
   playAudio("battle");
   const playerPokemon = createPokemon(
@@ -100,7 +106,11 @@ export const openBattleScene = async () => {
 export const closeBattleScene = () => {
   playAudio("ambient");
   removeElement("battle-scene");
+  gameState.pause = false;
   gameState.battle = false;
+  setTimeout(() => {
+    canFight = true;
+  }, 5000);
 };
 
 function createScene(playerPokemon, enemyPokemon, buttonsGroup, timerDiv) {

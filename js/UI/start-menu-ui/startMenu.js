@@ -31,7 +31,7 @@ export const createStartMenu = () => {
     elementName: "div",
     id: "menu",
     className:
-      "w-2/3 h-2/3 bg-amber-600 border-4 p-3 m-3 opacity-95 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2  drop-shadow-2xl  z-50 ",
+      "w-2/5 h-50 bg-amber-600 border-4 p-3 m-3 opacity-95 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2  drop-shadow-2xl  z-50 ",
     innerHTML: `
     <h2 class="text-center text-white font-bold text-xl mb-3">WELCOME</h2>
     <p class="font-bold text-white text-xl mb-2">
@@ -43,48 +43,7 @@ export const createStartMenu = () => {
       Trainer in a land brimming with diverse landscapes,
       untamed wilderness, and hidden mysteries.
     </p>
-    <p class="font-bold text-white text-xl mb-2">
-      In this game, players assume the role of a budding Pokémon Trainer, 
-      setting out from their humble hometown with a single goal: to catch 
-      and train a diverse array of remarkable creatures known as Pokémon.
-      The journey unfolds across sprawling terrains, from lush forests and
-      towering mountains to bustling cities and serene coastlines, each
-      habitat teeming with its own unique species of Pokémon.
-    </p>
-    <p class="font-bold text-white text-xl mb-2">
-      The heart of the game lies in the captivating art of capturing Pokémon.
-      Players employ skill and strategy as they explore various environments,
-      seeking elusive creatures hidden amidst tall grass, deep caves, and 
-      rippling waters. With a trusty Poké Ball in hand, they carefully 
-      weaken wild Pokémon in battle before attempting to capture them, 
-      adding them to their growing collection.
-    </p>
-    </p>
-    <p class="font-bold text-white text-xl mb-2">
-      But the journey is not just about capturing Pokémon;
-      it's also about forging unbreakable bonds. Along the way,
-      players befriend other Trainers, each with their own motivations
-      and aspirations. These connections blossom into rivalries and
-      alliances, adding a rich layer of depth and camaraderie to the
-      gameplay.
-      </p>
-    <p class="font-bold text-white text-xl mb-2">
-      As players hone their skills, they participate in intense Pokémon battles
-      that require tactical thinking, quick decision-making, and a deep 
-      understanding of type matchups. With a team of up to six Pokémon at
-      their disposal, trainers engage in turn-based battles that showcase
-      the unique abilities and moves of their chosen companions. 
-      Victory depends on a well-balanced team and the perfect timing 
-      of moves, making each battle a thrilling test of strategy.
-    </p>
-    <p class="font-bold text-white text-xl mb-2">
-      But the journey to becoming a Pokémon Master is not without its 
-      challenges. Sinister organizations may arise, threatening the 
-      harmony between humans and Pokémon. Trainers must thwart their 
-      plans, unravel mysteries, and protect the Pokémon world from imminent
-      danger.
-    </p>
-    
+
   `,
   });
 

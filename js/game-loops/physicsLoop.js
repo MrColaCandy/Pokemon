@@ -7,11 +7,13 @@ import { findPokemon } from "../pokemons/pokemonsCatch.js";
 import { gameState } from "../game-state/gameState.js";
 import { isOnline } from "../game-state/connection.js";
 import { openBattleScene } from "../scenes/battleScene.js";
+import { danceColliders } from "../maps/danceZoneMap.js";
+import { openDanceScene } from "../scenes/danceScene.js";
 
 export const startPhysicsLoop = () => {
   requestAnimationFrame(startPhysicsLoop);
 
-  if (gameState.battle || gameState.catch || gameState.pause) return;
+  if (gameState.pause) return;
   if (!isOnline) return;
   findPokemon();
   // detecting battle zones
@@ -19,8 +21,20 @@ export const startPhysicsLoop = () => {
     for (let i = 0; i < battleColliders.length; i++) {
       const collider = battleColliders[i];
       if (isCollide(playerSprit, collider)) {
-        if (Math.random() < 0.008) {
+        if (Math.random() < 0.008 && !gameState.battle) {
           openBattleScene();
+        }
+        break;
+      }
+    }
+  }
+  // detecting dance zones
+  if (playerInput.x !== 0 || playerInput.y !== 0) {
+    for (let i = 0; i < danceColliders.length; i++) {
+      const collider = danceColliders[i];
+      if (isCollide(playerSprit, collider)) {
+        if (Math.random() < 0.1 && !gameState.dance) {
+          openDanceScene();
         }
         break;
       }

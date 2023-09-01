@@ -1,9 +1,33 @@
-import { createElement, removeElement } from "../Utils/elementUtil.js";
+import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
+import { createElement, getElement } from "../Utils/elementUtil.js";
+import { playAudio } from "../audio/audioManager.js";
+import { closeDanceScene, showWrong } from "../scenes/danceScene.js";
 import { gameState } from "../game-state/gameState.js";
-import { showWrong } from "../scenes/danceScene.js";
-let currentRow = { direction: "", position: "", pass: false };
+
+let health = 3;
+
 export const getCurrentRow = () => {
   return currentRow;
+};
+
+export const getHealth = () => {
+  return health;
+};
+
+export const decreaseHealth = () => {
+  if (health === 1) {
+    gameOver();
+  }
+  if (health > 0) {
+    const healthDiv = getElement("dance-health");
+    if (!healthDiv) return;
+    health--;
+    healthDiv.innerHTML = `HEALTH: ${health} ❤`;
+  }
+};
+export const setHealth = (value) => {
+  health = value;
+  getElement("dance-health").innerHTML = `HEALTH: ${health} ❤`;
 };
 export const createDanceBoard = () => {
   const board = createElement({
@@ -20,43 +44,42 @@ export const createDanceBoard = () => {
   return board;
 };
 
-export const createRow = (direction = "up") => {
-  if (gameState.pause) return;
-  let position = 1;
+export const createRow = (direction = "KeyW") => {
+  let position = 0;
   const row = createElement({
-    id: position,
+    id: "false",
     elementName: "img",
     className:
       "w-3/4 absolute  left-1/2 transform -translate-x-1/2 transition-all duration-500 ease-in-out",
   });
 
+  row.setAttribute("data-direction", direction);
   row.src = `../../assets/images/arrows/${direction}.png`;
-  row.style.bottom = `${position}%`;
 
-  setInterval(() => {
-    if (gameState.pause) return;
-    row.id = position;
-    if (row.style.bottom == "95%") {
-      row.style.filter = `
-      blur(5px) brightness(200%) saturate(200%)
-      `;
-      currentRow.direction = direction;
-      currentRow.position = `${position}%`;
-      setTimeout(() => {
-        currentRow.position = 0;
-        if (!currentRow.pass) {
-          showWrong();
-        }
-      }, 300);
-    }
-    if (row.style.bottom == "100%") {
-      removeElement(position - 1);
-      return;
-    }
-    position += 1;
+  let rowTimeOut;
+  function moveRow() {
+    if (!gameState.dance) return;
 
     row.style.bottom = `${position}%`;
-  }, 100);
+    position++;
+    if (row.style.bottom == "102%") {
+      if (row.id === "false") {
+        decreaseHealth();
+        showWrong();
+      }
+      row.remove();
+      clearTimeout(rowTimeOut);
+    }
+    rowTimeOut = setTimeout(() => {
+      moveRow();
+    }, 100);
+  }
+  moveRow();
 
   return row;
+};
+export const gameOver = () => {
+  closeDanceScene();
+  showAnimation("../../assets/animations/failed.json", "dance-failed");
+  playAudio("omg", false);
 };

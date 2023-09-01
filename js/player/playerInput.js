@@ -1,6 +1,13 @@
+import { gameState } from "../game-state/gameState.js";
+
 export const playerInput = { x: 0, y: 0 };
 
 addEventListener("keydown", (e) => {
+  if (gameState.pause) {
+    playerInput.x = 0;
+    playerInput.y = 0;
+    return;
+  }
   if (e.code === "KeyW") {
     playerInput.y = 1;
     playerInput.x = 0;

@@ -13,29 +13,28 @@ import { createHomeButton } from "./UI/game-ui/home.js";
 import { openDanceScene } from "./scenes/danceScene.js";
 import { gameState } from "./game-state/gameState.js";
 
-openDanceScene();
-// createStartMenu();
-// createHomeButton();
-// await setDefaultPokemon();
+createStartMenu();
+createHomeButton();
+await setDefaultPokemon();
 
-// load();
-// checkConnection();
+load();
+checkConnection();
 
-// setAvatar("../assets/images/charAvatar.png");
+setAvatar("../assets/images/charAvatar.png");
 
-// // physics loop
-// startPhysicsLoop();
-// // animations loop
-// startAnimationLoop();
-// // AI loop
-// startAILoop();
-// // UI events
-// handlePokemonListEvents();
-// handleModalEvents();
-// handleCatchSceneEvents();
-// handleBattleEvents();
+// physics loop
+startPhysicsLoop();
+// animations loop
+startAnimationLoop();
+// AI loop
+startAILoop();
+// UI events
+handlePokemonListEvents();
+handleModalEvents();
+handleCatchSceneEvents();
+handleBattleEvents();
 
-// save();
+save();
 addEventListener("blur", () => {
   gameState.pause = true;
 });

@@ -3,6 +3,7 @@ import { createElement } from "../Utils/elementUtil.js";
 import { playAudio } from "../audio/audioManager.js";
 import { gameState } from "../game-state/gameState.js";
 import { getCatchingPokemon } from "../pokemons/currentPokemon.js";
+import { setCanCatch } from "../pokemons/pokemonsCatch.js";
 
 export const openCatchScene = () => {
   const pokemon = getCatchingPokemon();
@@ -59,5 +60,10 @@ export const openCatchScene = () => {
 export const closeCatchScene = () => {
   playAudio("ambient");
   document.querySelector("#catch-scene").remove();
+  gameState.pause = false;
   gameState.catch = false;
+
+  setTimeout(() => {
+    setCanCatch(true);
+  }, 5000);
 };

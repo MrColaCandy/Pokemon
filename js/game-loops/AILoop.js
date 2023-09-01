@@ -5,7 +5,7 @@ import { isOnline } from "../game-state/connection.js";
 let delay = -1;
 export const startAILoop = () => {
   requestAnimationFrame(startAILoop);
-  if (gameState.pause) return;
+
   if (!isOnline) return;
   if (!gameState.battle) {
     delay = -1;

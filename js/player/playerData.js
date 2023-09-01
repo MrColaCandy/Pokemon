@@ -1,5 +1,6 @@
 import { battleColliders } from "../maps/battleZonesMap.js";
 import { colliders } from "../maps/collisionMap.js";
+import { danceColliders } from "../maps/danceZoneMap.js";
 import { foregroundSprite } from "../maps/foregroundMap.js";
 import { mapSprite, offset } from "../maps/mainMap.js";
 import {
@@ -50,6 +51,11 @@ export const load = () => {
     c.position.y += data.position.y - offset.y;
   });
   battleColliders.forEach((c) => {
+    c.position.x += data.position.x - offset.x;
+    c.position.y += data.position.y - offset.y;
+  });
+
+  danceColliders.forEach((c) => {
     c.position.x += data.position.x - offset.x;
     c.position.y += data.position.y - offset.y;
   });

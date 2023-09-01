@@ -8,14 +8,25 @@ import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
 import { activateNotification } from "../UI/game-ui/notifications.js";
 import { list, renderPokemonsList } from "../UI/game-ui/list.js";
 import { playAudio } from "../audio/audioManager.js";
+let canCatch = true;
+export const setCanCatch = (value) => {
+  canCatch = value;
+};
+
+export const getCanCatch = () => {
+  return canCatch;
+};
 
 export const findPokemon = async () => {
-  if (gameState.battle || gameState.catch || gameState.pause) return;
+  if (!canCatch) return;
+
+  if (gameState.catch || gameState.pause) return;
 
   const chance = 0.0008;
   if (playerInput.x == 0 && playerInput.y == 0) return;
-  if (Math.random() <= chance) {
+  if (Math.random() <= chance && !gameState.catch) {
     gameState.catch = true;
+    gameState.pause = true;
     const randomId = Math.round(Math.random() * 100000) % 500;
     showAnimation(
       "../../assets/animations/spinner.json",
@@ -30,12 +41,14 @@ export const findPokemon = async () => {
       animation.remove();
       return;
     }
+    canCatch = false;
     setCatchingPokemon(pokemon);
     openCatchScene();
     animation.remove();
   }
 };
 let tries = 10;
+
 export const catchPokemon = () => {
   if (!gameState.catch) return;
   const pokemon = getCatchingPokemon();

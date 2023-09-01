@@ -1,12 +1,37 @@
 import { gameRoot } from "../UI/game-ui/gameRoot.js";
-import { createElement, getElement } from "../Utils/elementUtil.js";
-import { createDanceBoard, createRow, getCurrentRow } from "../dance/dance.js";
+import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
+import {
+  createElement,
+  getElement,
+  removeElement,
+} from "../Utils/elementUtil.js";
+import { currentAudio, playAudio } from "../audio/audioManager.js";
+import {
+  createDanceBoard,
+  createRow,
+  decreaseHealth,
+  setHealth,
+} from "../dance/dance.js";
+import { backgrounds } from "../game-loops/animationLoop.js";
 import { gameState } from "../game-state/gameState.js";
 let score = 0;
+let danceState = 1;
 let interval = 3000;
+let ready = false;
+let danceTimeOut;
 export const openDanceScene = () => {
-  if (gameState.pause) return;
+  if (gameState.dance) {
+    ready = false;
+    return;
+  }
+  ready = false;
+
+  gameState.dance = true;
+  gameState.pause = true;
+  playAudio("dance", true);
+  currentAudio.audio.playbackRate = 0.75;
   const dancer = createElement({
+    id: "dancer-gif",
     elementName: "img",
     className: "w-96 h-96 absolute right-0 bottom-10",
   });
@@ -16,78 +41,113 @@ export const openDanceScene = () => {
 
   const danceScene = createElement({
     elementName: "div",
-    className: "dance-scene absolute top-0 bottom-0 left-0 right-0",
+    id: "dance-scene",
+    className: "dance-scene absolute top-0 bottom-0 left-0 right-0 z-50",
     innerHTML: `
+    <div class="absolute top-1 right-40 bg-amber-400 rounded-md border-4 p-3 font-bold text-white" id="dance-health">HEALTH: 3 ❤</div>
+    <div class="absolute top-1 right-1 bg-amber-400 rounded-md border-4 p-3 font-bold text-white" id="dance-score">SCORE: 0</div>
       ${dancer.outerHTML}
       ${board.outerHTML}
       
     `,
   });
-  const directions = ["up", "down", "left", "right"];
   gameRoot.append(danceScene);
-  setInterval(() => {
-    const newRow = getElement("new-row");
-    if (gameState.pause) {
-      newRow.innerHTML = "";
-      return;
-    }
-    newRow.append(createRow(directions[Math.floor(Math.random() * 5)]));
+  setHealth(3);
+  showAnimation("../../assets/animations/countDown.json", "count-down", false);
+  danceTimeOut = setTimeout(() => {
+    createNewRow();
+    removeElement("count-down");
+    ready = true;
+  }, 5000);
+};
+const createNewRow = () => {
+  if (!gameState.dance) return;
+  const directions = ["KeyW", "KeyS", "KeyA", "KeyD"];
+  const newRowDiv = getElement("new-row");
+  const newRow = createRow(directions[Math.floor(Math.random() * 5)]);
+  newRow.style.bottom = "5%";
+  newRow.id = "false";
+  newRowDiv.append(newRow);
+  danceTimeOut = setTimeout(() => {
+    createNewRow();
   }, interval);
 };
-
 addEventListener("keyup", (e) => {
-  const currentRow = getCurrentRow();
-  if (e.code == "KeyW") {
-    getKey(currentRow, "up");
-  }
-  if (e.code == "KeyS") {
-    getKey(currentRow, "down");
-  }
-  if (e.code == "KeyD") {
-    getKey(currentRow, "right");
-  }
-  if (e.code == "KeyA") {
-    getKey(currentRow, "left");
+  if (!gameState.dance) return;
+  if (!ready) return;
+
+  const currentRow = [...getElement("new-row").children][0];
+  if (!currentRow) return;
+  if (
+    parseInt(currentRow.style.bottom) >= 95 &&
+    parseInt(currentRow.style.bottom) <= 100 &&
+    currentRow.dataset.direction === e.code
+  ) {
+    [...getElement("new-row").children][0].id = "true";
+    [...getElement("new-row").children][0].style.filter = `
+     blur(5px) contrast(200%) saturate(200%)
+    `;
+    showRight();
+
+    const danceScore = getElement("dance-score");
+    danceScore.innerHTML = `SCORE: ${++score}
+    `;
+    if (score % 10 === 0) {
+      const dancer = getElement("dancer-gif");
+      dancer.src = `../../assets/animations/dance/${++danceState}.gif`;
+      if (danceState >= 8) {
+        danceState = 1;
+      }
+      if (currentAudio.audio.playbackRate <= 1.5) {
+        currentAudio.audio.playbackRate += 0.25;
+      }
+      if (interval > 900) {
+        interval -= 100;
+      }
+    }
+  } else {
+    decreaseHealth();
+    showWrong();
   }
 });
-function getKey(currentRow, direction) {
-  if (currentRow.position === "95%") {
-    currentRow.position = 0;
-    if (currentRow.direction === direction) {
-      const arrows = getElement("board-arrows");
-      arrows.style.filter = `brightness(200%) contrast(200%) hue-rotate(218deg) saturate(200%)`;
-      currentRow.pass = true;
-      setTimeout(() => {
-        arrows.style.filter = `brightness(100%) contrast(100%) hue-rotate(0deg) saturate(100%)`;
-      }, 100);
-      setTimeout(() => {
-        arrows.style.filter = `brightness(200%) contrast(200%) hue-rotate(218deg) saturate(200%)`;
-      }, 200);
-      setTimeout(() => {
-        arrows.style.filter = `brightness(100%) contrast(100%) hue-rotate(0deg) saturate(100%)`;
-        currentRow.pass = false;
-      }, 400);
-      score++;
-      if (score % 5 === 0 && interval > 600) {
-        interval -= 500;
-      }
-      return;
-    }
-  }
 
-  showWrong();
-}
 export function showWrong() {
-  score = 0;
   const gameBoard = getElement("dance-board");
-  gameBoard.style.backgroundColor = "orangered";
-  setTimeout(() => {
-    gameBoard.style.backgroundColor = "black";
-  }, 100);
-  setTimeout(() => {
-    gameBoard.style.backgroundColor = "orangered";
-  }, 200);
-  setTimeout(() => {
-    gameBoard.style.backgroundColor = "black";
-  }, 400);
+  gsap.to(gameBoard, {
+    backgroundColor: "orangered",
+
+    yoyo: true,
+    onComplete: () => {
+      gsap.to(gameBoard, {
+        backgroundColor: "black",
+        ease: true,
+        yoyo: true,
+      });
+    },
+  });
 }
+function showRight() {
+  const gameBoard = getElement("dance-board");
+  gsap.to(gameBoard, {
+    backgroundColor: "seagreen",
+
+    yoyo: true,
+    onComplete: () => {
+      gsap.to(gameBoard, {
+        backgroundColor: "black",
+        ease: true,
+        yoyo: true,
+      });
+    },
+  });
+}
+export const closeDanceScene = () => {
+  gameState.pause = false;
+  gameState.dance = false;
+  clearTimeout(danceTimeOut);
+  removeElement("dance-scene");
+  playAudio("ambient");
+  backgrounds.forEach((b) => {
+    b.position.y -= 80;
+  });
+};

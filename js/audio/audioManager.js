@@ -27,8 +27,12 @@ const audios = [
     name: "yeah",
     audio: new Audio("../../assets/audio/yeah.mp3"),
   },
+  {
+    name: "dance",
+    audio: new Audio("../../assets/audio/dance.wav"),
+  },
 ];
-
+export const currentAudio = { name: "", audio: null };
 export const playAudio = (name, only = true) => {
   const { audio } = audios.find((a) => a.name == name);
   if (only) {
@@ -38,6 +42,7 @@ export const playAudio = (name, only = true) => {
     audio.loop = false;
   }
   audio.play();
+  currentAudio.audio = audio;
 };
 
 export const setVolume = (value) => {
@@ -45,4 +50,3 @@ export const setVolume = (value) => {
     a.audio.volume = value;
   });
 };
-setVolume(0.5);
