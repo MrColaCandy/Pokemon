@@ -1,5 +1,6 @@
 import { gameRoot } from "../UI/game-ui/gameRoot.js";
 import { showAnimation } from "../UI/game-ui/lottieAnimations.js";
+import { activateNotification } from "../UI/game-ui/notifications.js";
 import {
   createElement,
   getElement,
@@ -16,7 +17,7 @@ import { backgrounds } from "../game-loops/animationLoop.js";
 import { gameState } from "../game-state/gameState.js";
 let score = 0;
 let danceState = 1;
-let interval = 3000;
+let interval = 2200;
 let ready = false;
 let danceTimeOut;
 export const openDanceScene = () => {
@@ -25,7 +26,8 @@ export const openDanceScene = () => {
     return;
   }
   ready = false;
-
+  interval = 2200;
+  score = 0;
   gameState.dance = true;
   gameState.pause = true;
   playAudio("dance", true);
@@ -33,7 +35,7 @@ export const openDanceScene = () => {
   const dancer = createElement({
     id: "dancer-gif",
     elementName: "img",
-    className: "w-96 h-96 absolute right-0 bottom-10",
+    className: "w-96 h-96 absolute right-96 bottom-10",
   });
   dancer.src = "../../assets/animations/dance/1.gif";
 
@@ -83,6 +85,12 @@ addEventListener("keyup", (e) => {
     parseInt(currentRow.style.bottom) <= 100 &&
     currentRow.dataset.direction === e.code
   ) {
+    if (currentRow.style.bottom == "96%") {
+      activateNotification("Perfect!");
+      score += 1;
+    } else {
+      activateNotification("Good!");
+    }
     [...getElement("new-row").children][0].id = "true";
     [...getElement("new-row").children][0].style.filter = `
      blur(5px) contrast(200%) saturate(200%)
@@ -95,14 +103,14 @@ addEventListener("keyup", (e) => {
     if (score % 10 === 0) {
       const dancer = getElement("dancer-gif");
       dancer.src = `../../assets/animations/dance/${++danceState}.gif`;
-      if (danceState >= 8) {
+      if (danceState >= 5) {
         danceState = 1;
       }
-      if (currentAudio.audio.playbackRate <= 1.5) {
-        currentAudio.audio.playbackRate += 0.25;
+      if (currentAudio.audio.playbackRate < 1.5) {
+        currentAudio.audio.playbackRate += 0.1;
       }
-      if (interval > 900) {
-        interval -= 100;
+      if (interval > 300) {
+        interval -= 400;
       }
     }
   } else {

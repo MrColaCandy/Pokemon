@@ -3,10 +3,10 @@ import { gameRoot } from "./gameRoot.js";
 
 const notification = document.createElement("div");
 notification.id = "notification";
-notification.className = "absolute bottom-0 right-0";
+notification.className = "absolute bottom-0 right-0 z-50";
 notification.innerHTML = `
 <img src="../../assets/animations/notification.webp"><img>
-<div class="bg-amber-400 w-96 rounded-full rounded-br-none py-2 px-3 text-center text-xl text-white font-bold absolute bottom-52 right-40" id="message"></div>
+<div class="bg-amber-400 w-96 rounded-full rounded-br-none py-2 px-3 text-center text-xl text-white font-bold z-50 absolute bottom-52 right-40" id="message"></div>
 `;
 
 export const activateNotification = (message) => {

@@ -34,7 +34,7 @@ export const createDanceBoard = () => {
     elementName: "div",
     id: "dance-board",
     className:
-      " bg-black overflow-hidden opacity-80 z-50 w-1/4 h-full  absolute  top-0 bottom-0 ",
+      " bg-black overflow-hidden opacity-80 z-50 w-1/4 h-full left-1/2   absolute  top-0 bottom-0 transform -translate-x-1/2 ",
     innerHTML: `
     <img id="board-arrows" class="w-3/4 mx-auto mt-5" src="../../assets/images/arrows/allArrows.png"/>
     <div id="new-row"></div>
