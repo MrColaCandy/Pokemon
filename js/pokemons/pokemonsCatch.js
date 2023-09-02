@@ -59,6 +59,7 @@ export const catchPokemon = () => {
     setTimeout(() => {
       showAnimation("../assets/animations/failed.json", "fail");
       playAudio("omg", false);
+      activateNotification(`${pokemon.name} scaped!`);
     }, 500);
     return;
   }
