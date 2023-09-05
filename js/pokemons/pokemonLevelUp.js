@@ -6,7 +6,7 @@ export const levelUp = () => {
   if (pokemon.xp >= 100 * pokemon.level) {
     if (pokemon.hp >= 255) {
       pokemon.hp = 255;
-      pokemon.activateNotification("max level reached!");
+      activateNotification("max level reached!");
       return;
     }
     pokemon.xp -= 100 * pokemon.level;

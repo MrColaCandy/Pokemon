@@ -33,7 +33,7 @@ export const startPhysicsLoop = () => {
     for (let i = 0; i < danceColliders.length; i++) {
       const collider = danceColliders[i];
       if (isCollide(playerSprit, collider)) {
-        if (Math.random() < 0.001 && !gameState.dance) {
+        if (Math.random() < 0.008 && !gameState.dance) {
           openDanceScene();
         }
         break;

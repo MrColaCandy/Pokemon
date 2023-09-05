@@ -5,6 +5,7 @@ export class Sprite {
   }
 
   draw(context, currentFrame = 0, frames = 1) {
+    console.log(this.position);
     context.drawImage(
       this.image,
       currentFrame,

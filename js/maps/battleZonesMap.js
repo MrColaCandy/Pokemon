@@ -11,7 +11,7 @@ for (let i = 0; i < battleZones.length; i += rowLength) {
 
 battleZoneMap.forEach((row, i) => {
   row.forEach((col, j) => {
-    if (col != 145) return;
+    if (col != 33814) return;
 
     const collider = new Collider({
       x: j * tileSize + offset.x,

@@ -11,13 +11,13 @@ for (let i = 0; i < danceZoneData.length; i += rowLength) {
 
 danceZoneMap.forEach((row, i) => {
   row.forEach((col, j) => {
-    if (col != 145) return;
+    if (col != 33814) return;
 
     const collider = new Collider({
       x: j * tileSize + offset.x,
       y: i * tileSize + offset.y,
     });
-    console.log(collider);
+
     danceColliders.push(collider);
   });
 });
